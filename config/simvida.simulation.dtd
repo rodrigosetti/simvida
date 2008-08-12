@@ -1,0 +1,36 @@
+<!ELEMENT simulation (biota*,wall*)>
+
+<!ATTLIST simulation cicles CDATA #REQUIRED>
+<!ATTLIST simulation borns CDATA #REQUIRED>
+<!ATTLIST simulation deaths CDATA #REQUIRED>
+
+<!ELEMENT wall EMPTY>
+<!ATTLIST wall geometry CDATA #REQUIRED>
+
+<!ELEMENT biota (segment+)>
+<!ELEMENT segment EMPTY>
+
+<!ATTLIST biota position CDATA #REQUIRED>
+<!ATTLIST biota velocity CDATA #REQUIRED>
+<!ATTLIST biota angularvelocity CDATA #REQUIRED>
+<!ATTLIST biota anglecicle CDATA #REQUIRED>
+<!ATTLIST biota energy CDATA #REQUIRED>
+<!ATTLIST biota age CDATA #REQUIRED>
+<!ATTLIST biota generation CDATA #REQUIRED>
+<!ATTLIST biota offsprings CDATA #REQUIRED>
+<!ATTLIST biota lineage CDATA #REQUIRED>
+
+<!ATTLIST biota headcolor CDATA #REQUIRED>
+<!ATTLIST biota headmass CDATA #REQUIRED>
+<!ATTLIST biota reproductionthreshold CDATA #REQUIRED>
+<!ATTLIST biota reproductionangle CDATA #REQUIRED>
+<!ATTLIST biota energydistribution CDATA #REQUIRED>
+<!ATTLIST biota colisionturnangle CDATA #REQUIRED>
+
+<!ATTLIST segment color CDATA #REQUIRED>
+<!ATTLIST segment mass CDATA #REQUIRED>
+<!ATTLIST segment angle CDATA #REQUIRED>
+<!ATTLIST segment length CDATA #REQUIRED>
+<!ATTLIST segment arcangle CDATA #REQUIRED>
+<!ATTLIST segment forces CDATA #REQUIRED>
+<!ATTLIST segment angleposition CDATA #REQUIRED>

@@ -1,0 +1,16 @@
+<!ELEMENT biota (segment+)>
+<!ELEMENT segment EMPTY>
+
+<!ATTLIST biota headcolor CDATA #REQUIRED>
+<!ATTLIST biota headmass CDATA #REQUIRED>
+<!ATTLIST biota reproductionthreshold CDATA #REQUIRED>
+<!ATTLIST biota reproductionangle CDATA #REQUIRED>
+<!ATTLIST biota energydistribution CDATA #REQUIRED>
+<!ATTLIST biota colisionturnangle CDATA #REQUIRED>
+
+<!ATTLIST segment color CDATA #REQUIRED>
+<!ATTLIST segment mass CDATA #REQUIRED>
+<!ATTLIST segment angle CDATA #REQUIRED>
+<!ATTLIST segment length CDATA #REQUIRED>
+<!ATTLIST segment arcangle CDATA #REQUIRED>
+<!ATTLIST segment forces CDATA #REQUIRED>
