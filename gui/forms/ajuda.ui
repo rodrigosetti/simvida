@@ -10,47 +10,53 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Ajuda</string>
+   <string>Help</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/ajuda.png</iconset>
+   <iconset resource="../../graphs/recursos.qrc" >
+    <normaloff>:/botoes/botoes/ajuda.png</normaloff>:/botoes/botoes/ajuda.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
    <property name="spacing" >
     <number>6</number>
+   </property>
+   <property name="margin" >
+    <number>9</number>
    </property>
    <item>
     <widget class="QTextBrowser" name="textBrowser" >
      <property name="html" >
-      <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
-&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	&lt;span style=" font-size:20pt; font-weight:600;">SimVida&lt;/span>&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	&lt;span style=" font-weight:600;">Simulador de Vida Artificial&lt;/span>&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	por Rodrigo Setti - www.rodrigosetti.hpw.com.br&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">	O que é vida? Será "vivo" somente os processos que conhecemos baseados em carbono? ou vida é uma definição mais ampla que abrangeria qualquer processo capaz de replicar-se, evoluir e persistir?&lt;br />	Este projeto não foi criado para responder a estas perguntas filosóficas, mas sim para demonstrar de forma mais clara possível que o processo de evolução da vida a qual conhecemos - seleção natural(Darwin) - pode sim ser simulado no computador. Decerto que a complexidade e amplitude do sistema são limitados, devido a própria limitação computacional existente hoje, entretanto, mesmo assim é clara a evolução da "vida" diante dos seus olhos.&lt;br />	Para tornar as coisas mais "rápidas" que o mundo real aonde os aperfeiçoamentos genéticos ocorrem em escalas de tempo milenares, as criaturas neste simulador - chamadas de "Biotas" - são proprietárias de um código genético relativamente pequeno, o que possibilita mutações em características mais evidêntes, além disso os ciclos de vida são curtos acelerando as gerações e conseqüentemente as evoluções genéticas adaptativas.&lt;br />	Um Biota é um ser interessante. Ele é virtual, de fato, não passa de um conjunto de bytes - você pode chamar isso de algo "vivo"? - você pode chamar um simples conjunto de átomos de algo "vivo"?. Os Biotas tem apenas um objetivo na vida desde que nascem: reproduzir-se, em outras palavras, passar seus genes adiante. Isto deve ser feito com prioritária urgência já que seu tempo de vida é limitado, os Biotas vão ficando com crescente ineficiência com a idade até que não consigam mais sustentar sua vida e morrem.&lt;br />	O único parâmetro de saúde de um Biota é sua quantidade de energia, quando este valor atinge zero ele morre, e em contrapartida, quando atinge um determinado limiar estipulado por seus genes ele cria um filho(reprodução assexuada). Ao seu filho o pai doa certa percentagem de sua energia, também determinada pelos genes.&lt;br />	Os Biotas para atingir seu limiar de reprodução e passar seus genes adiante precisam conseguir mais energia. Isso é feito correndo atrás de pequenos grãos azuis de energia que fornecem uma generosa quantidade de energia a quem comê-lo. Entretanto, os grãos são freqüentemente escassos e aparecem em locais aleatórios, na verdade na maioria das vezes existem mais Biotas do que grãos no sistema, isso significa que quando você encontrar um grão terá que competi-lo com outro Biota.&lt;br />	Os Biotas, para conseguir grãos precisam nadar, e o nado consome energia, portanto é melhor que toda energia gasta nadando pelo grão compense pela energia que ele fornece. Existem infinitas configurações anatômicas e comportamentais possíveis para um Biota, algumas são extremamente ineficiêntes fazendo-o gastar quilos de energia para nadar poucos centímetros, outras configurações simplesmente não saem do lugar... Apenas uma pequena parcela destas permite à uma espécie conseguir nadar atrás de grãos, juntar energia, reproduzir e passar seus genes adiante para que seus filhos façam o mesmo e assim por diante.&lt;br />	A cada reprodução existe uma probabilidade de ocorrer uma mutação genética aleatória em qualquer gene do filho, as mutações afetam desde o movimento do nado, pesos da cabeça e segmentos, comprimentos, limiar energético que ativa a reprodução e outros genes diversos. Uma mutação - entre os Biotas - não é muito bem vista, isto porquê frequentemente os mutantes são seres esquisitos e com variações que lhes atrapalha a vida. Não conseguem competir por comida e ter filhos e acabam morrendo, seus filhos - se tiver - também não terão um futuro muito melhor. Apesar disso, algumas mutações dão aos sortudos mutantes habilidades ligeiramente superiores que seus pais, garantido uma vantagem seja no gasto menor de energia para nadar, ou uma velocidade maior, ou um ajuste mais preciso dos parâmetros de comportamento. Esta característica lhe permitirá ter mais filhos, e estes também mais filhos, competindo contra outros pobres Biotas inferiores e subjulgando outras raças, a menos que aquelas também possuam seus "mutantes".&lt;br />	Enfim, gerações e gerações se passam, e é possível notar um aumento crescente na eficiência e adaptação dos Biotas as características do ambiente. É possível salvar os genes de um biota num arquivo e carrega-lo depois em outra simulação para analizar o efeito da introdução da espécie. Paredes podem ser criadas no ambiente criando "isolamentos geográficos" entre os animais. Verdadeiras guerras biológicas são travadas entre espécies no dominio do nicho que compartilham.&lt;br />	Você pode descobrir muita coisa com o SimVidA. Analizar tendências evolutivas relativas aos parâmetros do mundo que você estipulou, salvar padrões genéticos bem sucedidos e competi-los, clonar, mutar, matar a vontade sem peso na consciência. Arquitetar esquemas de paredes que funcionam como fazendas de Biotas, criar espécies para fins específicos e o que mais sua imaginação permitir.&lt;/p>&lt;/body>&lt;/html></string>
+&lt;/style>&lt;/head>&lt;body style=" font-family:'DejaVu Sans'; font-size:10pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">	&lt;span style=" font-size:20pt; font-weight:600;">SimVida&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">	&lt;span style=" font-weight:600;">An Artificial Life Experiment&lt;/span>&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">	written by Rodrigo Setti - rodrigosetti@gmail.com&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">&lt;/p>
+&lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:9pt;">&lt;/p>
+&lt;table border="0" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;" cellspacing="2" cellpadding="0">
+&lt;tr>
+&lt;td>&lt;/td>
+&lt;td>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;a name="gap">&lt;/a>What is life? It will be "live" only the cases we know based on carbon? or life is a broader definition that would cover any process capable of replicating itself, evolve and persist? &lt;br />This project was not created to answer these philosophical questions, but to demonstrate more clearly possible that the process of evolution of life which we know - natural selection (Darwin) - but can be simulated on the computer. Surely that the complexity and breadth of the system are limited due to very limited computer existing today, however, is still clearly the evolution of life before their eyes. &lt;br />To make things more "rapid" that the real world where the genetic improvements occur in ancient scales of time, the creatures in this simulator - called "Biotas" - are the owners of a relatively small genetic code, which allows changes in features evidêntes also at life cycles are short and therefore accelerating the generations adaptive genetic changes. &lt;br />One is a Biota be interesting. It is virtual, in fact, is a set of bytes - you can call it something "alive"? -- You can draw a simple set of atoms of something "alive"?. The Biotas has only one goal in life since birth: reproduce, in other words, pass their genes on. This should be done with urgent priority since his time of life is limited, the Biotas get with increasing inefficiency with age until they fail to sustain their lives more and die. &lt;br />The only measure of health of a Biota is the amount of energy, the figure is zero when he dies, and in return, when he reaches a certain threshold set by their genes it creates a child (asexual reproduction). When her son's father donates certain percentage of their energy, also determined by genes. &lt;br />The Biotas to reach its threshold of reproduction and pass their genes on to need more energy. This is done running behind small grains of blue energy that provide a generous amount of energy to those who eat it. Meanwhile, grains are often scarce and appear in random places, indeed in most cases there are more than Biotas grains in the system, this means that when you have to find a grain it competed with other Biota. &lt;br />The Biotas, grains need to get swimming, swimming and consumes energy, so it is best that all energy used by swimming grain compensate for the energy it provides. There are endless configurations anatomical and behavioral possible for a Biota, some are making it extremely ineficiêntes spend kilos of energy to swim a few centimetres, other settings simply do not leave the place ... Only a small portion of these permits to achieve a kind swimming behind grains, add energy, reproduce and pass their genes on to their children do the same and so on. &lt;br />Each reproduction there is a likelihood of a genetic mutation occur randomly in any gene of the child, since the mutations affect the movement of swimming, weights and segments of the head, length, energy threshold that activates the reproduction and several other genes. A mutation - among Biotas - is not very well view, this often why the mutants are being picky and with variations to them atrapalha life. They can not compete for food and have children and end up dying, their children - if - also will not have a much better future. Nevertheless, some changes give lucky mutated slightly higher skills than their parents, is guaranteed an advantage in spending less energy to swim, or a higher speed, or a setting more precise parameters of behavior. This feature allows you to have more children, and they also more children, competing against other poor Biotas lower and subjulgando other races, unless they also have their "mutants". &lt;br />Finally, if generations and generations pass, and you can see an increase in efficiency and adaptation of Biotas the characteristics of the environment. You can save the genes of a biota in a file and upload it later in another simulation to analyze the effect of the introduction of the species. Walls can be created in the environment create "geographic insulation" between animals. True wars are fought between biological species in the area of niche that share. &lt;br />You can find out a lot with the SimVidA. To analyze trends on the parameters of the world that you set, saving genetic patterns successful and competitive them, cloning, mutar, killing the will without weight in consciousness. Arquitetar schemes walls that act as farm Biotas, creating species for specific purposes and what more your imagination allows.&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/body>&lt;/html></string>
      </property>
     </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>311</width>
          <height>20</height>
@@ -70,7 +76,7 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources>
-  <include location="../../../graphs/recursos.qrc" />
+  <include location="../../graphs/recursos.qrc" />
  </resources>
  <connections/>
 </ui>

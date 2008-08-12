@@ -6,21 +6,22 @@
     <x>0</x>
     <y>0</y>
     <width>733</width>
-    <height>688</height>
+    <height>666</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Estatísticas</string>
+   <string>Statistics</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/estatisticas.png</iconset>
+   <iconset resource="../../graphs/recursos.qrc" >
+    <normaloff>:/botoes/botoes/estatisticas.png</normaloff>:/botoes/botoes/estatisticas.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
    <property name="spacing" >
     <number>6</number>
+   </property>
+   <property name="margin" >
+    <number>9</number>
    </property>
    <item>
     <widget class="QSplitter" name="splitter" >
@@ -29,27 +30,27 @@
      </property>
      <widget class="QGroupBox" name="groupBox_3" >
       <property name="title" >
-       <string>Médias</string>
+       <string>Averages</string>
       </property>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
        </property>
+       <property name="margin" >
+        <number>9</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label1" >
            <property name="text" >
-            <string>Energia:</string>
+            <string>Energy:</string>
            </property>
           </widget>
          </item>
@@ -58,7 +59,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -77,16 +78,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label2" >
            <property name="text" >
-            <string>Número de segmentos:</string>
+            <string>Number of limbs:</string>
            </property>
           </widget>
          </item>
@@ -95,7 +96,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -114,16 +115,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label3" >
            <property name="text" >
-            <string>Massa cefálica:</string>
+            <string>Head mass:</string>
            </property>
           </widget>
          </item>
@@ -132,7 +133,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -151,16 +152,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="labe4" >
            <property name="text" >
-            <string>Limiar de reprodução:</string>
+            <string>Reproduction threshold:</string>
            </property>
           </widget>
          </item>
@@ -169,7 +170,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -188,16 +189,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label5" >
            <property name="text" >
-            <string>Distribuição Energética:</string>
+            <string>Energy distribution:</string>
            </property>
           </widget>
          </item>
@@ -206,7 +207,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -225,16 +226,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label6" >
            <property name="text" >
-            <string>Geração:</string>
+            <string>Generation:</string>
            </property>
           </widget>
          </item>
@@ -243,7 +244,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -262,16 +263,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label7" >
            <property name="text" >
-            <string>Idade:</string>
+            <string>Age:</string>
            </property>
           </widget>
          </item>
@@ -280,7 +281,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -299,16 +300,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label" >
            <property name="text" >
-            <string>Número de filhos:</string>
+            <string>Offsprings:</string>
            </property>
           </widget>
          </item>
@@ -317,7 +318,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -338,27 +339,27 @@
      </widget>
      <widget class="QGroupBox" name="groupBox_4" >
       <property name="title" >
-       <string>Máximos</string>
+       <string>Maximums</string>
       </property>
       <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>9</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
        </property>
+       <property name="margin" >
+        <number>9</number>
+       </property>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label1_2" >
            <property name="text" >
-            <string>Energia:</string>
+            <string>Energy:</string>
            </property>
           </widget>
          </item>
@@ -367,7 +368,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -386,16 +387,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label2_2" >
            <property name="text" >
-            <string>Número de segmentos:</string>
+            <string>Number of limbs:</string>
            </property>
           </widget>
          </item>
@@ -404,7 +405,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -423,16 +424,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label3_2" >
            <property name="text" >
-            <string>Massa cefálica:</string>
+            <string>Head mass:</string>
            </property>
           </widget>
          </item>
@@ -441,7 +442,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -460,16 +461,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="labe4_2" >
            <property name="text" >
-            <string>Limiar de reprodução:</string>
+            <string>Reproduction threshold:</string>
            </property>
           </widget>
          </item>
@@ -478,7 +479,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -497,16 +498,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label5_2" >
            <property name="text" >
-            <string>Distribuição Energética:</string>
+            <string>Energy distribution:</string>
            </property>
           </widget>
          </item>
@@ -515,7 +516,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -534,16 +535,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label6_2" >
            <property name="text" >
-            <string>Geração:</string>
+            <string>Generation:</string>
            </property>
           </widget>
          </item>
@@ -552,7 +553,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -571,16 +572,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label7_2" >
            <property name="text" >
-            <string>Idade:</string>
+            <string>Age:</string>
            </property>
           </widget>
          </item>
@@ -589,7 +590,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -608,16 +609,16 @@
        </item>
        <item>
         <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
          <property name="spacing" >
           <number>6</number>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <item>
           <widget class="QLabel" name="label_2" >
            <property name="text" >
-            <string>Número de filhos:</string>
+            <string>Offsprings:</string>
            </property>
           </widget>
          </item>
@@ -626,7 +627,7 @@
            <property name="orientation" >
             <enum>Qt::Horizontal</enum>
            </property>
-           <property name="sizeHint" >
+           <property name="sizeHint" stdset="0" >
             <size>
              <width>40</width>
              <height>20</height>
@@ -650,7 +651,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Biotas x Grãos</string>
+      <string>Biots x Grains</string>
      </property>
      <widget class="QWidget" name="layoutWidget" >
       <property name="geometry" >
@@ -662,16 +663,16 @@
        </rect>
       </property>
       <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
        <property name="spacing" >
         <number>6</number>
+       </property>
+       <property name="margin" >
+        <number>0</number>
        </property>
        <item>
         <widget class="QLabel" name="label_3" >
          <property name="text" >
-          <string>Grãos per Biota:</string>
+          <string>Grains by Biot:</string>
          </property>
         </widget>
        </item>
@@ -680,7 +681,7 @@
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" >
+         <property name="sizeHint" stdset="0" >
           <size>
            <width>40</width>
            <height>20</height>
@@ -707,9 +708,7 @@
        </rect>
       </property>
       <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>0</hsizetype>
-        <vsizetype>0</vsizetype>
+       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -720,7 +719,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="title" >
-      <string>Proporção de Linhagens</string>
+      <string>Lineage distribution</string>
      </property>
      <widget class="Grafico" native="1" name="imgEspecies" >
       <property name="geometry" >
@@ -732,9 +731,7 @@
        </rect>
       </property>
       <property name="sizePolicy" >
-       <sizepolicy>
-        <hsizetype>0</hsizetype>
-        <vsizetype>0</vsizetype>
+       <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -744,18 +741,18 @@
    </item>
    <item>
     <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <property name="spacing" >
       <number>6</number>
+     </property>
+     <property name="margin" >
+      <number>0</number>
      </property>
      <item>
       <spacer>
        <property name="orientation" >
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0" >
         <size>
          <width>40</width>
          <height>20</height>
@@ -782,7 +779,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../graphs/recursos.qrc" />
+  <include location="../../graphs/recursos.qrc" />
  </resources>
  <connections>
   <connection>

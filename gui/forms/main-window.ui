@@ -13,7 +13,8 @@
    <string>SimVida Reborn</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../graphs/recursos.qrc" >:/icones/icones/principal.png</iconset>
+   <iconset resource="../../graphs/recursos.qrc" >
+    <normaloff>:/icones/icones/principal.png</normaloff>:/icones/icones/principal.png</iconset>
   </property>
   <property name="iconSize" >
    <size>
@@ -22,6 +23,14 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>24</y>
+     <width>585</width>
+     <height>531</height>
+    </rect>
+   </property>
    <layout class="QGridLayout" >
     <property name="margin" >
      <number>9</number>
@@ -32,7 +41,7 @@
     <item row="1" column="0" >
      <widget class="MundoQT" native="1" name="widget" >
       <property name="cursor" >
-       <cursor>13</cursor>
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
      </widget>
     </item>
@@ -58,12 +67,12 @@
      <x>0</x>
      <y>0</y>
      <width>585</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Encontrar" >
     <property name="title" >
-     <string>&amp;Encontrar</string>
+     <string>&amp;Find</string>
     </property>
     <addaction name="maisVelhoAct" />
     <addaction name="maisEnergiaAct" />
@@ -76,14 +85,15 @@
    </widget>
    <widget class="QMenu" name="menuSimVida" >
     <property name="title" >
-     <string>&amp;Menu Principal</string>
+     <string>&amp;Main Menu</string>
     </property>
     <widget class="QMenu" name="menuParedes" >
      <property name="title" >
-      <string>&amp;Paredes</string>
+      <string>&amp;Walls</string>
      </property>
      <property name="icon" >
-      <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/nova-parede.png</iconset>
+      <iconset resource="../../graphs/recursos.qrc" >
+       <normaloff>:/botoes/botoes/nova-parede.png</normaloff>:/botoes/botoes/nova-parede.png</iconset>
      </property>
      <property name="separatorsCollapsible" >
       <bool>true</bool>
@@ -111,130 +121,146 @@
   </widget>
   <action name="reiniciarAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/reiniciar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/reiniciar.png</normaloff>:/botoes/botoes/reiniciar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Reiniciar</string>
+    <string>&amp;Reset</string>
    </property>
   </action>
   <action name="opcoesAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/opcoes.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/opcoes.png</normaloff>:/botoes/botoes/opcoes.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Opções</string>
+    <string>&amp;Options</string>
    </property>
   </action>
   <action name="sairAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/sair.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/sair.png</normaloff>:/botoes/botoes/sair.png</iconset>
    </property>
    <property name="text" >
-    <string>Sair</string>
+    <string>&amp;Exit</string>
    </property>
   </action>
   <action name="ajudaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/ajuda.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/ajuda.png</normaloff>:/botoes/botoes/ajuda.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Ajuda</string>
+    <string>&amp;Help</string>
    </property>
   </action>
   <action name="mutacaoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/mutacao.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/mutacao.png</normaloff>:/botoes/botoes/mutacao.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Mutação</string>
+    <string>&amp;Mutate</string>
    </property>
   </action>
   <action name="novoBiotaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/adicionar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/adicionar.png</normaloff>:/botoes/botoes/adicionar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Novo Biota</string>
+    <string>&amp;New Biot</string>
    </property>
   </action>
   <action name="carregarBiotaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/abrir.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/abrir.png</normaloff>:/botoes/botoes/abrir.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Carregar Biota</string>
+    <string>&amp;Load Biot</string>
    </property>
   </action>
   <action name="salvarBiotaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/salvar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/salvar.png</normaloff>:/botoes/botoes/salvar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Salvar Biota</string>
+    <string>&amp;Save Biot</string>
    </property>
   </action>
   <action name="matarBiotaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/matar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/matar.png</normaloff>:/botoes/botoes/matar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Matar Biota</string>
+    <string>&amp;Kill</string>
    </property>
   </action>
   <action name="novaParedeAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/nova-parede.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/nova-parede.png</normaloff>:/botoes/botoes/nova-parede.png</iconset>
    </property>
    <property name="text" >
-    <string>Nova &amp;Parede</string>
+    <string>New &amp;Wall</string>
    </property>
   </action>
   <action name="removerParedeAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/excluir-parede.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/excluir-parede.png</normaloff>:/botoes/botoes/excluir-parede.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Remover Parede</string>
+    <string>&amp;Remove Wall</string>
    </property>
   </action>
   <action name="novoGraoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/add_grao.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/add_grao.png</normaloff>:/botoes/botoes/add_grao.png</iconset>
    </property>
    <property name="text" >
-    <string>Adicionar &amp;Grão</string>
+    <string>Add &amp;Grain</string>
    </property>
   </action>
   <action name="removerGraoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/sub_grao.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/sub_grao.png</normaloff>:/botoes/botoes/sub_grao.png</iconset>
    </property>
    <property name="text" >
-    <string>Remover &amp;Grão</string>
+    <string>Remove &amp;Grain</string>
    </property>
   </action>
   <action name="salvarParedesAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/salvar_paredes.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/salvar_paredes.png</normaloff>:/botoes/botoes/salvar_paredes.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Salvar Esquema</string>
+    <string>&amp;Save Wall map</string>
    </property>
   </action>
   <action name="abrirParedesAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/abrir_paredes.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/abrir_paredes.png</normaloff>:/botoes/botoes/abrir_paredes.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Abrir Esquema</string>
+    <string>&amp;Open Wall map</string>
    </property>
   </action>
   <action name="estatisticasAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/estatisticas.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/estatisticas.png</normaloff>:/botoes/botoes/estatisticas.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Estatísticas</string>
+    <string>&amp;Estatistics</string>
    </property>
   </action>
   <action name="pauseAct" >
@@ -242,7 +268,8 @@
     <bool>true</bool>
    </property>
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/pause.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/pause.png</normaloff>:/botoes/botoes/pause.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Pause</string>
@@ -250,50 +277,56 @@
   </action>
   <action name="informacoesAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/icones/icones/principal.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/icones/icones/principal.png</normaloff>:/icones/icones/principal.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Informações</string>
+    <string>&amp;Info</string>
    </property>
   </action>
   <action name="maisVelhoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/mais_velho.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/mais_velho.png</normaloff>:/botoes/botoes/mais_velho.png</iconset>
    </property>
    <property name="text" >
-    <string>Mais &amp;velho</string>
+    <string>&amp;Older</string>
    </property>
   </action>
   <action name="maisEnergiaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/mais_energia.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/mais_energia.png</normaloff>:/botoes/botoes/mais_energia.png</iconset>
    </property>
    <property name="text" >
-    <string>Mais &amp;energia</string>
+    <string>Most &amp;Energy</string>
    </property>
   </action>
   <action name="geracaoMaisNovaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/icones/icones/principal.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/icones/icones/principal.png</normaloff>:/icones/icones/principal.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Geração mais nova</string>
+    <string>Younger &amp;Generation</string>
    </property>
   </action>
   <action name="geracaoMaisAntigaAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/icones/icones/principal.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/icones/icones/principal.png</normaloff>:/icones/icones/principal.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Geração mais antiga</string>
+    <string>Oldest &amp;Generation</string>
    </property>
   </action>
   <action name="maisFilhosAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/mais_filhos.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/mais_filhos.png</normaloff>:/botoes/botoes/mais_filhos.png</iconset>
    </property>
    <property name="text" >
-    <string>Com mais &amp;filhos</string>
+    <string>Most &amp;Offsprings</string>
    </property>
   </action>
   <action name="fixarSelecionadoAct" >
@@ -301,10 +334,11 @@
     <bool>true</bool>
    </property>
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/fixar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/fixar.png</normaloff>:/botoes/botoes/fixar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Fixar em Biota &amp;selecionado</string>
+    <string>&amp;Track selected</string>
    </property>
   </action>
   <action name="autoSelecionarAct" >
@@ -312,34 +346,38 @@
     <bool>true</bool>
    </property>
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/auto_selecionar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/auto_selecionar.png</normaloff>:/botoes/botoes/auto_selecionar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Auto selecionar</string>
+    <string>&amp;Auto select</string>
    </property>
   </action>
   <action name="limparAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/limpar.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/limpar.png</normaloff>:/botoes/botoes/limpar.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Limpar</string>
+    <string>&amp;Clean</string>
    </property>
   </action>
   <action name="abrirSimulacaoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/abrirsimulacao.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/abrirsimulacao.png</normaloff>:/botoes/botoes/abrirsimulacao.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Abrir Simulação</string>
+    <string>&amp;Open Simulation</string>
    </property>
   </action>
   <action name="salvarSimulacaoAct" >
    <property name="icon" >
-    <iconset resource="../../../graphs/recursos.qrc" >:/botoes/botoes/salvarsimulacao.png</iconset>
+    <iconset resource="../../graphs/recursos.qrc" >
+     <normaloff>:/botoes/botoes/salvarsimulacao.png</normaloff>:/botoes/botoes/salvarsimulacao.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Salvar Simulação</string>
+    <string>&amp;Save Simulation</string>
    </property>
   </action>
  </widget>
@@ -351,7 +389,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../graphs/recursos.qrc" />
+  <include location="../../graphs/recursos.qrc" />
  </resources>
  <connections/>
 </ui>

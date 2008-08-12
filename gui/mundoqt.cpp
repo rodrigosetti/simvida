@@ -87,7 +87,7 @@ void MundoQT::paintEvent(QPaintEvent *event)
 
 	/* Limpa tela na regiao */
 	painter.drawRect(event->rect());
-	
+
 	/* Configura pen */
 	QPen pen;
 	pen.setColor(Qt::black);
@@ -304,9 +304,9 @@ void MundoQT::mouseDoubleClickEvent ( QMouseEvent * event )
 		if (selecionarGrao((Vetor<float>(event->x(), event->y()) - (Vetor<float>(width(),height())/2.0f))/zm + Vetor<float>(offsetx, offsety)))
 			/* Remove selecionado */
 			removerGrao();
-		else			
+		else
 			novoGrao();
-	
+
 		/* Libera */
 		mutex->unlock();
 
@@ -350,7 +350,7 @@ void MundoQT::mouseMoveEvent ( QMouseEvent * event )
 		if (selecionado != NULL)
 		{
 			/* Arrasta biota */
-			selecionado->biota.estado.posicao = 
+			selecionado->biota.estado.posicao =
 			((Vetor<float>(event->x(), event->y()) - (Vetor<float>(width(),height())/2.0f))/zm + Vetor<float>(offsetx, offsety));
 
 			/* redesenha */
@@ -438,7 +438,7 @@ void MundoQT::wheelEvent ( QWheelEvent * event )
 	else if (event->delta() < 0 && zm < 4.0f)
 	{
 		zm = (zm * 1.1f) + 0.001f;
-		
+
 		if (!executando)
 			repaint();
 	}
@@ -450,7 +450,7 @@ void MundoQT::mouseReleaseEvent ( QMouseEvent * event )
 {
 	if (selecionado && executando)
 	{
-		selecionado->biota.acelerar(Vetor<float>(event->x(), event->y()) - lastPos);	
+		selecionado->biota.acelerar(Vetor<float>(event->x(), event->y()) - lastPos);
 	}
 }
 
@@ -495,10 +495,10 @@ QMutex* MundoQT::getMutex()
 
 void MundoQT::atualizar()
 {
-	static int deadCry = 50;	
+	static int deadCry = 50;
 
 	mutex->lock();
-	Mundo::atualizar();	
+	Mundo::atualizar();
 
 	if (selecionado && fixar)
 	{
@@ -514,12 +514,12 @@ void MundoQT::atualizar()
 	if (!selecionado && autoSelec)
 	{
 		if (deadCry >= 50)
-		{	
+		{
 			deadCry = 0;
 			maisVelho();
 		}
 		else
-			deadCry++;			
+			deadCry++;
 	}
 
 	mudaBarraStatus();
@@ -536,8 +536,8 @@ void MundoQT::estatistica()
 
 	struct NohLineage
 	{
-		unsigned int lineage;	
-		unsigned int quantidade;		
+		unsigned int lineage;
+		unsigned int quantidade;
 		int cor[3];
 		struct NohLineage *proximo;
 	};
@@ -627,7 +627,7 @@ void MundoQT::estatistica()
 			novo->cor[1] = percorre->biota.genes.cor_cabeca[1];
 			novo->cor[2] = percorre->biota.genes.cor_cabeca[2];
 
-			percorre_lin->proximo = novo;	
+			percorre_lin->proximo = novo;
 		}
 	}
 	mutex->unlock();
@@ -650,15 +650,15 @@ void MundoQT::estatistica()
 	QPainter painterE(stat->imgEspecies->imagem);
 	int altura = 0;
 
-	
+
 	/* Percorre lista de lineages */
 	struct NohLineage *percorre_lin = cabecaLineage.proximo;
 	while (percorre_lin != NULL)
 	{
 		/* Desenha */
 		painterE.setPen(QPen(QColor(
-		percorre_lin->cor[0]/percorre_lin->quantidade, 
-		percorre_lin->cor[1]/percorre_lin->quantidade, 
+		percorre_lin->cor[0]/percorre_lin->quantidade,
+		percorre_lin->cor[1]/percorre_lin->quantidade,
 		percorre_lin->cor[2]/percorre_lin->quantidade)));
 
 		painterE.drawLine(
@@ -758,9 +758,9 @@ void MundoQT::mudaBarraStatus()
 		QString::fromUtf8("Energia do grão: ") + QVariant(propriedades.energia_grao).toString());
 	else
 		emit estadoModificado(
-		QVariant((int)estatisticas.ciclos).toString() + QString::fromUtf8(" Ciclos, ") +
-		QVariant((int)estatisticas.numero_biotas).toString() + QString::fromUtf8(" Biotas, ") +
-		QVariant((int)estatisticas.numero_graos).toString() + QString::fromUtf8(" Grãos."));
+		QVariant((int)estatisticas.ciclos).toString() + " " + tr("Cicles") + ", " +
+		QVariant((int)estatisticas.numero_biotas).toString() + + " " + tr("Biots") + ", " +
+		QVariant((int)estatisticas.numero_graos).toString() + + " " + tr("Grains") + ".");
 }
 
 /******************************************************************************/
@@ -771,7 +771,7 @@ void MundoQT::limpar()
 
 	/* Sincroniza */
 	if (mutex != NULL)
-		mutex->lock();	
+		mutex->lock();
 
 	Mundo::destroy();
 
@@ -794,7 +794,7 @@ void MundoQT::reiniciar()
 
 	/* Sincroniza */
 	if (mutex != NULL)
-		mutex->lock();	
+		mutex->lock();
 
 	/* Cria biotas aleatorios */
 	int inicial = rand() % 2+((propriedades.tamanho_x*propriedades.tamanho_y)/250000);
@@ -805,7 +805,7 @@ void MundoQT::reiniciar()
 	if (mutex != NULL)
 		mutex->unlock();
 
-	selecionado = NULL;	
+	selecionado = NULL;
 
 	/* redesenha */
 	if (!executando)
@@ -938,7 +938,7 @@ void MundoQT::removerParede()
 
 void MundoQT::abrirParedes()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Abrir Esquema de Paredes"),"",tr("Esquema de Paredes (*.wall)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Wall map"),"",tr("Wall map (*.wall)"));
 
 	if (fileName.isNull())
 		return;
@@ -962,7 +962,7 @@ void MundoQT::abrirParedes()
 
 void MundoQT::salvarParedes()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Salvar Esquema de Paredes"),"",tr("Esquema de Paredes (*.wall)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Wall map"),"",tr("Wall map (*.wall)"));
 
 	if (fileName.isNull())
 		return;
@@ -999,7 +999,7 @@ void MundoQT::removerGrao()
 
 void MundoQT::salvarBiota()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Salvar Biota"),"",tr("Biota (*.biota)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),"",tr("Biot (*.biot)"));
 
 	if (fileName.isNull())
 		return;
@@ -1015,7 +1015,7 @@ void MundoQT::salvarBiota()
 
 void MundoQT::abrirBiota()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Abrir Biota"),"",tr("Biota (*.biota)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Biot"),"",tr("Biot (*.biot)"));
 
 	if (fileName.isNull())
 		return;
@@ -1274,7 +1274,7 @@ void MundoQT::maisFilhos()
 
 void MundoQT::abrirSimulacao()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, QString::fromUtf8("Abrir Simulação"),"",QString::fromUtf8("Simulação (*.simvida)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Simulation"),"",tr("Simulation (*.simvida)"));
 
 	if (fileName.isNull())
 		return;
@@ -1297,7 +1297,7 @@ void MundoQT::abrirSimulacao()
 
 void MundoQT::salvarSimulacao()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, QString::fromUtf8("Salvar Simulação"),"",QString::fromUtf8("Simulação (*.simvida)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Simulation"),"",tr("Simulation (*.simvida)"));
 
 	if (fileName.isNull())
 		return;

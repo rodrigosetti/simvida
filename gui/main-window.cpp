@@ -1,8 +1,8 @@
-#include <QtGui> 
+#include <QtGui>
 #include "main-window.h"
 
 // if we include <QtGui> there is no need to include every class used: <QString>, <QFileDialog>,...
- 
+
 MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, f)
 {
     setupUi(this); // this sets up GUI
@@ -25,7 +25,7 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	widget->setStat(stat);
 
 	/* Cria toolbares */
-	QToolBar *toolBar1 = new QToolBar("Barra de ferramentas", this);
+	QToolBar *toolBar1 = new QToolBar(tr("Tool bar"), this);
 	toolBar1->addAction(abrirSimulacaoAct);
 	toolBar1->addAction(salvarSimulacaoAct);
 	toolBar1->addSeparator();
@@ -42,7 +42,7 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	toolBar1->addAction(ajudaAct);
 	toolBar1->addAction(sairAct);
 
-	QToolBar *toolBar2 = new QToolBar("Procurar Biota", this);
+	QToolBar *toolBar2 = new QToolBar(tr("Search Biot"), this);
 	toolBar2->addAction(maisVelhoAct);
 	toolBar2->addAction(maisEnergiaAct);
 	toolBar2->addAction(geracaoMaisNovaAct);
@@ -87,9 +87,9 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	QObject::connect(maisFilhosAct, SIGNAL(triggered()), widget, SLOT(maisFilhos()));
 	QObject::connect(fixarSelecionadoAct, SIGNAL(triggered()), widget, SLOT(fixarSelecionado()));
 	QObject::connect(autoSelecionarAct, SIGNAL(triggered()), widget, SLOT(autoSelecionar()));
-	
+
 	/* Cria menu popup de biota */
-	QMenu *menuBiota = new QMenu("Biota", widget);
+	QMenu *menuBiota = new QMenu(tr("Biot"), widget);
 	menuBiota->addAction(salvarBiotaAct);
 	menuBiota->addAction(mutacaoAct);
 	menuBiota->addAction(matarBiotaAct);
@@ -102,7 +102,7 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	QObject::connect(informacoesAct, SIGNAL(triggered()), info, SLOT(show()));
 
 	/* Cria menu popup vazio */
-	QMenu *menuVoid = new QMenu("Opções", widget);
+	QMenu *menuVoid = new QMenu(tr("Options"), widget);
 	menuVoid->addAction(novaParedeAct);
 	menuVoid->addSeparator();
 	menuVoid->addAction(novoBiotaAct);
@@ -117,14 +117,14 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	QObject::connect(novoGraoAct, SIGNAL(triggered()), widget, SLOT(novoGrao()));
 
 	/* Cria menu popup do grao */
-	QMenu *menuGrao = new QMenu("Grao", widget);
+	QMenu *menuGrao = new QMenu(tr("Grain"), widget);
 	menuGrao->addAction(removerGraoAct);
 
 	/* Associa conexao */
 	QObject::connect(removerGraoAct, SIGNAL(triggered()), widget, SLOT(removerGrao()));
 
 	/* Cria menu popup da parede */
-	QMenu *menuParede  = new QMenu("Parede", widget);
+	QMenu *menuParede  = new QMenu(tr("Wall"), widget);
 	menuParede->addAction(removerParedeAct);
 
 	/* Associa conexao */
@@ -157,9 +157,9 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	QObject::connect(timerS, SIGNAL(timeout()), widget, SLOT(estatistica()));
 
 	/* Inicia timers */
-	timerA->start(50); 
-	timerP->start(50); 
-	timerS->start(500); 
+	timerA->start(50);
+	timerP->start(50);
+	timerS->start(500);
 }
 
 void MainWindow::startStop()

@@ -27,8 +27,8 @@ void Info::showEvent ( QShowEvent * event )
 
 	labelReproducao->setText(QVariant(biota.genes.limiar_reproducao).toString() + tr(" wens"));
 	labelDistribuicao->setText(QVariant((int)(biota.genes.distribuicao_energia * 100.0f)).toString() + tr(" %"));
-	labelAnguloColisao->setText(QVariant((int)(biota.genes.angulo_colisao*TO_DEGREE)).toString() + tr(" graus"));
-	labelAnguloReproducao->setText(QVariant((int)(biota.genes.angulo_reproducao*TO_DEGREE)).toString() + tr(" graus"));
+	labelAnguloColisao->setText(QVariant((int)(biota.genes.angulo_colisao*TO_DEGREE)).toString() + " " + tr("degrees"));
+	labelAnguloReproducao->setText(QVariant((int)(biota.genes.angulo_reproducao*TO_DEGREE)).toString() + " " + tr("degrees"));
 }
 
 /******************************************************************************/
