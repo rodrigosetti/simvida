@@ -426,13 +426,19 @@ void Mundo::abrirParedes(FILE *arq)
 		int ax, ay, bx, by;
 		fscanf(arq, "%d,%d:%d,%d\n", &ax, &ay, &bx, &by);
 
-		/* Insere nova parede */
-		struct NohParede *novaParede = new struct NohParede;
+		if (ax > -(signed int)propriedades.tamanho_x && ax < (signed int)propriedades.tamanho_x*2 &&
+			bx > -(signed int)propriedades.tamanho_x && bx < (signed int)propriedades.tamanho_x*2 &&
+			ay > -(signed int)propriedades.tamanho_y && ay < (signed int)propriedades.tamanho_y*2 &&
+			ay > -(signed int)propriedades.tamanho_x && ay < (signed int)propriedades.tamanho_y*2)
+		{
+			/* Insere nova parede */
+			struct NohParede *novaParede = new struct NohParede;
 
-		novaParede->inicio = Vetor<float>(ax,ay);
-		novaParede->fim = Vetor<float>(bx,by);
-		novaParede->proximo = nohCabecaParedes.proximo;
-		nohCabecaParedes.proximo = novaParede;
+			novaParede->inicio = Vetor<float>(ax,ay);
+			novaParede->fim = Vetor<float>(bx,by);
+			novaParede->proximo = nohCabecaParedes.proximo;
+			nohCabecaParedes.proximo = novaParede;
+		}
 	}
 }
 
@@ -441,12 +447,12 @@ void Mundo::abrirParedes(FILE *arq)
 void Mundo::salvarMundo(FILE *arq)
 {
 	/* Salva estatisticas */
-	fprintf(arq, "%lu,%lu,%lu\n",	 
+	fprintf(arq, "%lu,%lu,%lu\n",
 	estatisticas.ciclos, estatisticas.mortes, estatisticas.nascimentos);
 
 	/* salva propriedades */
 	fprintf(arq, "%d,%d,%d,%d,%d,%d\n",
-	propriedades.teto_energetico, propriedades.energia_grao, 
+	propriedades.teto_energetico, propriedades.energia_grao,
 	propriedades.probabilidade_mutacao, propriedades.intensidade_mutacao,
 	propriedades.tamanho_x, propriedades.tamanho_y);
 
@@ -457,7 +463,7 @@ void Mundo::salvarMundo(FILE *arq)
 	{
 		fprintf(arq, "(%d,%d)\n", (int)percorre->posicao.X, (int)percorre->posicao.Y);
 	}
-	
+
 	/* separador */
 	fprintf(arq, "#\n");
 
@@ -481,7 +487,7 @@ void Mundo::salvarMundo(FILE *arq)
 		fprintf(arq, "(");
 		for (unsigned int c = 0; c < percorre->biota.numero_segmentos; c++)
 			fprintf(arq, "%f,", percorre->biota.estado.posicaoSegmentos[c]);
-		fprintf(arq, ")\n");			
+		fprintf(arq, ")\n");
 	}
 
 	/* separador */
@@ -504,7 +510,7 @@ void Mundo::abrirMundo(FILE *arq)
 
 	/* Abre propriedades */
 	fscanf(arq, "%d,%d,%d,%d,%d,%d\n",
-	&propriedades.teto_energetico, &propriedades.energia_grao, 
+	&propriedades.teto_energetico, &propriedades.energia_grao,
 	&propriedades.probabilidade_mutacao, &propriedades.intensidade_mutacao,
 	&propriedades.tamanho_x, &propriedades.tamanho_y);
 
@@ -513,7 +519,7 @@ void Mundo::abrirMundo(FILE *arq)
 	{
 		int px, py;
 		fscanf(arq, "%d,%d)\n", &px, &py);
-		inserirGrao(Vetor<float>(px,py));		
+		inserirGrao(Vetor<float>(px,py));
 	}
 	fgetc(arq);
 
@@ -533,7 +539,7 @@ void Mundo::abrirMundo(FILE *arq)
 		fscanf(arq, "(");
 		for (unsigned int c = 0; c < biota.numero_segmentos; c++)
 			fscanf(arq, "%f,", &biota.estado.posicaoSegmentos[c]);
-		fscanf(arq, ")\n");	
+		fscanf(arq, ")\n");
 
 		/* adiciona */
 		inserirBiota(biota);
