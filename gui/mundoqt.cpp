@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <QFileDialog>
+#include <QtDebug>
 
 #define RAIO_SELECAO 10
 #define RAIO_PAREDE (GROSSURA_PAREDE * 2)
@@ -28,11 +29,14 @@ MundoQT::MundoQT(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), Mundo()
 	fixar = false;
 	autoSelec = false;
 
-	/* Verifica se existe arquivo com configuracoes */
-	FILE *arq = fopen("simvida.cfg", "r");
+	QString simvidaConfig = QDir::homePath() + QDir::separator() + ".simvida";
 
-	if (arq == NULL)
+	/* Verifica se existe arquivo com configuracoes */
+	QFile file(simvidaConfig);
+	if (!file.open(QIODevice::ReadOnly))
 	{
+		qDebug() << tr("Creating new Simvida configuration file");
+
 		/* Nao existe arquivo : coloca valores padrao */
 		propriedades.tamanho_x = TAMANHO_X;
 		propriedades.tamanho_y =  TAMANHO_Y;
@@ -41,22 +45,29 @@ MundoQT::MundoQT(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), Mundo()
 		propriedades.probabilidade_mutacao = PROBABILIDADE_MUTACAO;
 		propriedades.intensidade_mutacao = INTENSIDADE_MUTACAO;
 		/* Cria arquivo e escreve valores padrao */
-		arq = fopen("simvida.cfg", "w");
+		file.open(QIODevice::WriteOnly);
+		FILE *arq = fdopen(file.handle(), "w");
+
 		fprintf(arq, "%d\n%d\n%d\n%d\n%d\n%d\n",
 		TAMANHO_X, TAMANHO_Y, ENERGIA_GRAO,
 		TETO_ENERGETICO, PROBABILIDADE_MUTACAO, INTENSIDADE_MUTACAO);
+
+		fclose(arq);
 	}
 	else
 	{
 		/* Carrega configuracoes de arquivo */
+		FILE *arq = fdopen(file.handle(), "r");
 		fscanf(arq, "%d\n%d\n%d\n%d\n%d\n%d\n",
 		&(propriedades.tamanho_x), &(propriedades.tamanho_y),
 		&(propriedades.energia_grao),
 		&(propriedades.teto_energetico), &(propriedades.probabilidade_mutacao),
 		&(propriedades.intensidade_mutacao));
+
+		fclose(arq);
 	}
 	/* Fecha arquivo */
-	fclose(arq);
+	file.close();
 
 	reiniciar();
 }
@@ -749,13 +760,13 @@ void MundoQT::mudaBarraStatus()
 {
 	if (selecionado)
 		emit estadoModificado(
-		QString::fromUtf8("Idade: ") + QVariant(selecionado->biota.estado.idade).toString() +
-		QString::fromUtf8(", Geração: ") + QVariant((int)selecionado->biota.estado.geracao).toString() +
-		QString::fromUtf8(", Energia: ") + QVariant((int)selecionado->biota.estado.energia).toString() +
-		QString::fromUtf8(", Filhos: ") + QVariant((int)selecionado->biota.estado.filhos).toString());
+		tr("Age") + ": " + QVariant(selecionado->biota.estado.idade).toString() +
+		", " + tr("Generation") + ": " + QVariant((int)selecionado->biota.estado.geracao).toString() +
+		", " + tr("Energy") + ": " + QVariant((int)selecionado->biota.estado.energia).toString() +
+		", " + tr("Offsprings") + ": " + QVariant((int)selecionado->biota.estado.filhos).toString());
 	else if (grao_selecionado)
 		emit estadoModificado(
-		QString::fromUtf8("Energia do grão: ") + QVariant(propriedades.energia_grao).toString());
+		", " + tr("Grain energy") + ": " + QVariant(propriedades.energia_grao).toString());
 	else
 		emit estadoModificado(
 		QVariant((int)estatisticas.ciclos).toString() + " " + tr("Cicles") + ", " +
@@ -938,7 +949,7 @@ void MundoQT::removerParede()
 
 void MundoQT::abrirParedes()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Wall map"),"",tr("Wall map (*.wall)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Wall map"),QDir::homePath(),tr("Wall map") + "(*.wall)");
 
 	if (fileName.isNull())
 		return;
@@ -962,7 +973,7 @@ void MundoQT::abrirParedes()
 
 void MundoQT::salvarParedes()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Wall map"),"",tr("Wall map (*.wall)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Wall map"),QDir::homePath(),tr("Wall map") + "(*.wall)");
 
 	if (fileName.isNull())
 		return;
@@ -999,7 +1010,7 @@ void MundoQT::removerGrao()
 
 void MundoQT::salvarBiota()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),"",tr("Biot (*.biot)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),QDir::homePath(),tr("Biot") + "(*.biot)");
 
 	if (fileName.isNull())
 		return;
@@ -1015,7 +1026,7 @@ void MundoQT::salvarBiota()
 
 void MundoQT::abrirBiota()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Biot"),"",tr("Biot (*.biot)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Biot"),QDir::homePath(),tr("Biot") + "(*.biot)");
 
 	if (fileName.isNull())
 		return;
@@ -1274,7 +1285,7 @@ void MundoQT::maisFilhos()
 
 void MundoQT::abrirSimulacao()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Simulation"),"",tr("Simulation (*.simvida)"));
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Simulation"),QDir::homePath(),tr("Simulation") + "(*.simvida)");
 
 	if (fileName.isNull())
 		return;
@@ -1297,7 +1308,7 @@ void MundoQT::abrirSimulacao()
 
 void MundoQT::salvarSimulacao()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Simulation"),"",tr("Simulation (*.simvida)"));
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Simulation"),QDir::homePath(),tr("Simulation") + "(*.simvida)");
 
 	if (fileName.isNull())
 		return;
