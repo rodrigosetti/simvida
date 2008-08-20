@@ -98,10 +98,6 @@ public:
 	void removerGraoSelecionado();
 	bool graoSelecionado();
 
-	/* operacoes com paredes */
-	void salvarParedes(FILE *);
-	void abrirParedes(FILE *);
-
 	/* abrir e salvar mundo */
 	void salvarMundo(FILE *);
 	void abrirMundo(FILE *);

@@ -98,8 +98,6 @@
      <property name="separatorsCollapsible" >
       <bool>true</bool>
      </property>
-     <addaction name="abrirParedesAct" />
-     <addaction name="salvarParedesAct" />
     </widget>
     <addaction name="abrirSimulacaoAct" />
     <addaction name="salvarSimulacaoAct" />
@@ -234,24 +232,6 @@
    </property>
    <property name="text" >
     <string>Remove &amp;Grain</string>
-   </property>
-  </action>
-  <action name="salvarParedesAct" >
-   <property name="icon" >
-    <iconset resource="../../graphs/recursos.qrc" >
-     <normaloff>:/botoes/botoes/salvar_paredes.png</normaloff>:/botoes/botoes/salvar_paredes.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Save Wall map</string>
-   </property>
-  </action>
-  <action name="abrirParedesAct" >
-   <property name="icon" >
-    <iconset resource="../../graphs/recursos.qrc" >
-     <normaloff>:/botoes/botoes/abrir_paredes.png</normaloff>:/botoes/botoes/abrir_paredes.png</iconset>
-   </property>
-   <property name="text" >
-    <string>&amp;Open Wall map</string>
    </property>
   </action>
   <action name="estatisticasAct" >

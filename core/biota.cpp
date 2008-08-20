@@ -3,6 +3,11 @@
 #include <math.h>
 #include <stdlib.h>
 
+#include <QFile>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QStringList>
+
 /******************************************************************************/
 
 unsigned int current_lineage = 0;
@@ -705,22 +710,45 @@ bool Biota::selecionar(Vetor<float> posicao)
 /******************************************************************************/
 
 /* Salva genes do biota no arquivo dado */
-void Biota::salvar(FILE* arquivo)
+void Biota::salvar(FILE* arquivo, bool saveState, int ident)
 {
-	/* Salva biota no arquivo */
-	fprintf(arquivo, "[%d,%d,%d,%d,%d,%.4f,%.4f,%.4f,%d]\n",
-	genes.cor_cabeca[0],genes.cor_cabeca[1],genes.cor_cabeca[2], genes.massa_cabeca, genes.limiar_reproducao,
-	genes.distribuicao_energia, genes.angulo_reproducao,
-	genes.angulo_colisao, numero_segmentos);
+	if (ident == 0)
+	{
+		fprintf(arquivo, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+		fprintf(arquivo, "<!DOCTYPE biot SYSTEM \"http://simvida.sourceforge.net/simvida.biot.dtd\">\n");
+	}
+
+	char *tab = new char[ident+1];
+	for (int c = 0; c < ident; c++) tab[c] = '\t';
+	tab[ident] = '\0';
+
+	fprintf(arquivo, "%s<biot headcolor=\"%d;%d;%d\" headmass=\"%d\" reproductionthreshold=\"%d\"\n", tab,
+		genes.cor_cabeca[0],genes.cor_cabeca[1],genes.cor_cabeca[2], genes.massa_cabeca, genes.limiar_reproducao);
+	fprintf(arquivo, "%s      reproductionangle=\"%.4f\" energydistribution=\"%.4f\" colisionturnangle=\"%.4f\"", tab,
+		genes.angulo_reproducao, genes.distribuicao_energia, genes.angulo_colisao);
+
+	if (saveState)
+	{
+		fprintf(arquivo, "\n%s      position=\"%d;%d\" velocity=\"%.2f;%.2f\" angularvelocity=\"%.4f\" anglecicle=\"%.4f\"\n", tab,
+		(int)estado.posicao.X, (int)estado.posicao.Y, estado.velocidade.X, estado.velocidade.Y, estado.velocidade_angular, estado.angulo);
+		fprintf(arquivo, "%s      energy=\"%.4f\" age=\"%d\" generation=\"%d\" offsprings=\"%d\"", tab,
+		estado.energia, estado.idade, estado.geracao, estado.filhos);
+	}
+	fprintf(arquivo, ">\n");
 
 	for (unsigned int c = 0; c < numero_segmentos; c++)
-		fprintf(arquivo, "{%.4f,%d,%d,%.4f,%d,%d,%d,%.4f,%.4f}\n",
-		genes.segmentos[c].arco,
-		genes.segmentos[c].comprimento,
-		genes.segmentos[c].massa,
-		genes.segmentos[c].angulo,
-		genes.segmentos[c].cor[0],genes.segmentos[c].cor[1],genes.segmentos[c].cor[2],
-		genes.segmentos[c].fa, genes.segmentos[c].fb);
+	{
+		fprintf(arquivo, "%s\t<segment color=\"%d;%d;%d\" mass=\"%d\" angle=\"%.4f\" length=\"%d\" arcangle=\"%.4f\" forces=\"%.4f;%.4f\"", tab,
+			genes.segmentos[c].cor[0],genes.segmentos[c].cor[1],genes.segmentos[c].cor[2],
+			genes.segmentos[c].massa, genes.segmentos[c].angulo, genes.segmentos[c].comprimento,
+			genes.segmentos[c].arco, genes.segmentos[c].fa, genes.segmentos[c].fb);
+		if (saveState)
+		{
+			fprintf(arquivo, " angleposition=\"%.4f\"", estado.posicaoSegmentos[c]);
+		}
+		fprintf(arquivo, "/>\n");
+	}
+	fprintf(arquivo, "%s</biot>\n", tab);
 }
 
 /******************************************************************************/
@@ -728,35 +756,93 @@ void Biota::salvar(FILE* arquivo)
 /* Carrega genes do arquivo */
 void Biota::abrir(FILE* arquivo)
 {
-	/* Abre arquivo e carrega dados */
-	fscanf(arquivo, "[%d,%d,%d,%d,%d,%f,%f,%f,%d]\n",
-	&genes.cor_cabeca[0],&genes.cor_cabeca[1],&genes.cor_cabeca[2], &genes.massa_cabeca, &genes.limiar_reproducao,
-	&genes.distribuicao_energia, &genes.angulo_reproducao,
-	&genes.angulo_colisao, &numero_segmentos);
+	QDomDocument xmlDocument;
+	QFile file;
+	file.open(arquivo, QIODevice::ReadOnly);
+	xmlDocument.setContent(&file);
+	file.close();
 
-	genes.segmentos = new struct GenesSegmento[numero_segmentos];
+	QDomNodeList children = xmlDocument.childNodes();
+	for (int i=0; i < children.count(); i++)
+	{
+		/* try to convert the node to an element. */
+		QDomElement element = children.at(i).toElement();
+		if (!element.isNull() && element.tagName() == "biot")
+		{
+			abrir(element);
+			break;
+		}
+	}
 
-	for (unsigned int c = 0; c < numero_segmentos; c++)
-		fscanf(arquivo, "{%f,%d,%d,%f,%d,%d,%d,%f,%f}\n",
-		&genes.segmentos[c].arco,
-		&genes.segmentos[c].comprimento,
-	        &genes.segmentos[c].massa,
-        	&genes.segmentos[c].angulo,
-		&genes.segmentos[c].cor[0],&genes.segmentos[c].cor[1],&genes.segmentos[c].cor[2],
-        	&genes.segmentos[c].fa, &genes.segmentos[c].fb);
+	xmlDocument.clear();
 
 	/* Seta estado inicial */
 	estado.energia = genes.limiar_reproducao-1;
-	estado.geracao = 1;
-	estado.idade = 0;
-	estado.filhos = 0;
+}
 
-//	if (estado.posicaoSegmentos != NULL)
-//		delete estado.posicaoSegmentos;
-	estado.posicaoSegmentos = new float[numero_segmentos];
-	for (unsigned int c = 0; c < numero_segmentos; c++)
+/******************************************************************************/
+
+void Biota::abrir(QDomNode xmlNode)
+{
+	/* try to convert the node to an element. */
+	QDomElement element = xmlNode.toElement();
+	if (!element.isNull() && element.tagName() == "biot")
 	{
-		estado.posicaoSegmentos[c] = 0.0f;
+		QStringList headcolor = element.attribute("headcolor").split(";");
+		genes.cor_cabeca[0] = headcolor.at(0).toInt();
+		genes.cor_cabeca[1] = headcolor.at(1).toInt();
+		genes.cor_cabeca[2] = headcolor.at(2).toInt();
+
+		genes.massa_cabeca = element.attribute("headmass").toInt();
+		genes.limiar_reproducao = element.attribute("reproductionthreshold").toInt();
+		genes.distribuicao_energia = element.attribute("energydistribution").toFloat();
+		genes.angulo_reproducao = element.attribute("reproductionangle").toFloat();
+		genes.angulo_colisao = element.attribute("colisionturnangle").toFloat();
+
+		QStringList position = element.attribute("position", "0;0").split(";");
+		estado.posicao.X = position.at(0).toFloat();
+		estado.posicao.Y = position.at(1).toFloat();
+
+		QStringList velocity = element.attribute("velocity", "0;0").split(";");
+		estado.velocidade.X = velocity.at(0).toFloat();
+		estado.velocidade.Y = velocity.at(1).toFloat();
+
+		estado.velocidade_angular = element.attribute("angularvelocity", "0").toFloat();
+		estado.angulo = element.attribute("anglecicle", "0").toFloat();
+		estado.geracao = element.attribute("generation", "1").toInt();
+		estado.filhos = element.attribute("offsprings", "0").toInt();
+		estado.idade = element.attribute("age", "0").toInt();
+		estado.energia = element.attribute("energy", QString::number(genes.limiar_reproducao-1)).toFloat();
+
+		QDomNodeList biotChildren = element.childNodes();
+		numero_segmentos = biotChildren.count();
+
+		genes.segmentos = new struct GenesSegmento[numero_segmentos];
+		estado.posicaoSegmentos = new float[numero_segmentos];
+
+		for (int j=0; j < biotChildren.count(); j++)
+		{
+			/* try to convert the node to an element. */
+			QDomElement segment = biotChildren.at(j).toElement();
+			if (!segment.isNull() && segment.tagName() == "segment")
+			{
+				genes.segmentos[j].arco = segment.attribute("arcangle").toFloat();
+				genes.segmentos[j].comprimento = segment.attribute("length").toInt();
+				genes.segmentos[j].massa = segment.attribute("mass").toInt();
+				genes.segmentos[j].angulo = segment.attribute("angle").toFloat();
+
+				estado.posicaoSegmentos[j] = segment.attribute("angleposition").toFloat();
+
+				QStringList segcolor = segment.attribute("color").split(";");
+				genes.segmentos[j].cor[0] = segcolor.at(0).toInt();
+				genes.segmentos[j].cor[1] = segcolor.at(1).toInt();
+				genes.segmentos[j].cor[2] = segcolor.at(2).toInt();
+
+				QStringList forces = segment.attribute("forces").split(";");
+				genes.segmentos[j].fa = forces.at(0).toFloat();
+				genes.segmentos[j].fb = forces.at(1).toFloat();
+			}
+		}
 	}
 }
 
@@ -798,5 +884,3 @@ void Biota::refletir()
 }
 
 /******************************************************************************/
-
-

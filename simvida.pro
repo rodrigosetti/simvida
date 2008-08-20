@@ -3,9 +3,15 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET =
 DEPENDPATH += . console core graphs gui gui/forms
 INCLUDEPATH += . gui core
+
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+UI_DIR = gui/ui
+
+QT += xml
 
 # Input
 HEADERS += core/biota.h \

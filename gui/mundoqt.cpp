@@ -947,46 +947,6 @@ void MundoQT::removerParede()
 
 /******************************************************************************/
 
-void MundoQT::abrirParedes()
-{
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Wall map"),QDir::homePath(),tr("Wall map") + "(*.wall)");
-
-	if (fileName.isNull())
-		return;
-
-	FILE *arq;
-	arq = fopen(fileName.toAscii().data(), "r");
-
-	/* Remove todas as paredes */
-	mutex->lock();
-	Mundo::abrirParedes(arq);
-	mutex->unlock();
-
-	/* Redesenha */
-	if (!executando)
-		repaint();
-
-	fclose(arq);
-}
-
-/******************************************************************************/
-
-void MundoQT::salvarParedes()
-{
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Wall map"),QDir::homePath(),tr("Wall map") + "(*.wall)");
-
-	if (fileName.isNull())
-		return;
-
-	FILE *arq;
-	arq = fopen(fileName.toAscii().data(), "w");
-
-	Mundo::salvarParedes(arq);
-	fclose(arq);
-}
-
-/******************************************************************************/
-
 void MundoQT::novoGrao()
 {
 	/* Insere novo grao na posicao */
@@ -1010,7 +970,7 @@ void MundoQT::removerGrao()
 
 void MundoQT::salvarBiota()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),QDir::homePath(),tr("Biot") + "(*.biot)");
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),QDir::homePath(),tr("Biot") + "(*.xml)");
 
 	if (fileName.isNull())
 		return;
@@ -1026,7 +986,7 @@ void MundoQT::salvarBiota()
 
 void MundoQT::abrirBiota()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Biot"),QDir::homePath(),tr("Biot") + "(*.biot)");
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Biot"),QDir::homePath(),tr("Biot") + "(*.xml)");
 
 	if (fileName.isNull())
 		return;
@@ -1285,7 +1245,7 @@ void MundoQT::maisFilhos()
 
 void MundoQT::abrirSimulacao()
 {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Simulation"),QDir::homePath(),tr("Simulation") + "(*.simvida)");
+	QString fileName = QFileDialog::getOpenFileName(this, tr("Open Simulation"),QDir::homePath(),tr("Simulation") + "(*.xml)");
 
 	if (fileName.isNull())
 		return;
@@ -1308,7 +1268,7 @@ void MundoQT::abrirSimulacao()
 
 void MundoQT::salvarSimulacao()
 {
-	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Simulation"),QDir::homePath(),tr("Simulation") + "(*.simvida)");
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Simulation"),QDir::homePath(),tr("Simulation") + "(*.xml)");
 
 	if (fileName.isNull())
 		return;

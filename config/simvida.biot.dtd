@@ -1,28 +1,11 @@
-<!ELEMENT simulation (biot*,grain*,wall*)>
-
-<!ATTLIST simulation cicles CDATA "0">
-<!ATTLIST simulation borns CDATA "0">
-<!ATTLIST simulation deaths CDATA "0">
-<!ATTLIST simulation energyceil CDATA "55924">
-<!ATTLIST simulation grainenergy CDATA "200">
-<!ATTLIST simulation mutationprobability CDATA "0.6">
-<!ATTLIST simulation mutationintensity CDATA "1">
-<!ATTLIST simulation size CDATA "8192,6144">
-
-<!ELEMENT wall EMPTY>
-<!ATTLIST wall geometry CDATA #REQUIRED>
-
-<!ELEMENT grain EMPTY>
-<!ATTLIST grain position CDATA #REQUIRED>
-
 <!ELEMENT biot (segment+)>
 <!ELEMENT segment EMPTY>
 
-<!ATTLIST biot position CDATA #REQUIRED>
-<!ATTLIST biot velocity CDATA "0,0">
+<!ATTLIST biot position CDATA #IMPLIED>
+<!ATTLIST biot velocity CDATA #IMPLIED>
 <!ATTLIST biot angularvelocity CDATA "0">
 <!ATTLIST biot anglecicle CDATA "0">
-<!ATTLIST biot energy CDATA #REQUIRED>
+<!ATTLIST biot energy CDATA #IMPLIED>
 <!ATTLIST biot age CDATA "0">
 <!ATTLIST biot generation CDATA "0">
 <!ATTLIST biot offsprings CDATA "0">

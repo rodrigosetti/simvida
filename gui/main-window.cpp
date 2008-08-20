@@ -36,8 +36,6 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	toolBar1->addAction(estatisticasAct);
 	toolBar1->addAction(opcoesAct);
 	toolBar1->addSeparator();
-	toolBar1->addAction(salvarParedesAct);
-	toolBar1->addAction(abrirParedesAct);
 	toolBar1->addSeparator();
 	toolBar1->addAction(ajudaAct);
 	toolBar1->addAction(sairAct);
@@ -76,8 +74,6 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	QObject::connect(estatisticasAct, SIGNAL(triggered()), stat, SLOT(show()));
 	QObject::connect(salvarSimulacaoAct, SIGNAL(triggered()), widget, SLOT(salvarSimulacao()));
 	QObject::connect(abrirSimulacaoAct, SIGNAL(triggered()), widget, SLOT(abrirSimulacao()));
-	QObject::connect(salvarParedesAct, SIGNAL(triggered()), widget, SLOT(salvarParedes()));
-	QObject::connect(abrirParedesAct, SIGNAL(triggered()), widget, SLOT(abrirParedes()));
 	QObject::connect(widget, SIGNAL(estadoModificado(QString)), barraStatus, SLOT(showMessage(QString)));
 
 	QObject::connect(maisVelhoAct, SIGNAL(triggered()), widget, SLOT(maisVelho()));

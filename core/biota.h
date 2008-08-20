@@ -2,6 +2,7 @@
 #define _BIOTA__H_
 
 #include <stdio.h>
+#include <QDomNode>
 
 #include "definicoes.h"
 #include "vetor.h"
@@ -81,8 +82,9 @@ public:
 	enum ResultadoAtualizacao atualizar(void*);
 	void mutacao();
 	bool selecionar(Vetor<float>);
-	void salvar(FILE*);
+	void salvar(FILE*, bool saveState=false, int ident=0);
 	void abrir(FILE*);
+	void abrir(QDomNode xmlNode);
 	void posicionar(Vetor<float>);
 	void acelerar(Vetor<float>);
 	void destroy();

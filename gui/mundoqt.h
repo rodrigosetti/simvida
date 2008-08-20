@@ -1,6 +1,6 @@
 #ifndef _MUNDO_QT_H
 #define _MUNDO_QT_H
- 
+
 #include <QWidget>
 #include <QMouseEvent>
 #include <QPaintEvent>
@@ -19,11 +19,11 @@
 
 #define PROBABILIDADE_MUTACAO 60
 #define INTENSIDADE_MUTACAO 1
- 
+
 class MundoQT : public QWidget, public Mundo
 {
     Q_OBJECT
- 
+
 public:
 
 	/* Constructor */
@@ -53,10 +53,10 @@ public:
 
 signals:
 
-	void changeHorizontalBar(int);	
+	void changeHorizontalBar(int);
 	void changeVerticalBar(int);
 	void estadoModificado(QString texto);
- 
+
 public slots:
 
 	void offsetxChanged(int);
@@ -70,8 +70,6 @@ public slots:
 
 	void novaParede();
 	void removerParede();
-	void abrirParedes();
-	void salvarParedes();
 	void novoGrao();
 	void removerGrao();
 	void novoBiota();
@@ -107,7 +105,7 @@ protected:
 	void mousePressEvent ( QMouseEvent * event );
 	void wheelEvent ( QWheelEvent * event );
 	void mouseReleaseEvent ( QMouseEvent * event );
-	
+
 private:
 
 	/* Paredes */
@@ -136,11 +134,11 @@ private:
 	bool autoSelec;
 
 	/* Controle de execucao */
-	QMutex *mutex;	
+	QMutex *mutex;
 
 	/* telas */
 	Info *info;
 	Stat *stat;
 };
- 
+
 #endif

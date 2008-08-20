@@ -4,6 +4,9 @@
 #include <math.h>
 #include <time.h>
 
+#include <QStringList>
+#include <QFile>
+
 /******************************************************************************/
 
 /* Operacoes com graos */
@@ -393,108 +396,49 @@ bool Mundo::graoSelecionado()
 }
 
 /******************************************************************************/
-void Mundo::salvarParedes(FILE *arq)
-{
-	/* Percorre lista de paredes */
-	for (struct NohParede *percorre = nohCabecaParedes.proximo;
-	percorre != NULL;
-	percorre = percorre->proximo)
-	{
-		/* Escreve no arquivo */
-		fprintf(arq, "%d,%d:%d,%d\n",
-		(int)(percorre->inicio.X), (int)(percorre->inicio.Y),
-		(int)(percorre->fim.X), (int)(percorre->fim.Y));
-	}
-}
-
-/******************************************************************************/
-
-void Mundo::abrirParedes(FILE *arq)
-{
-	while (nohCabecaParedes.proximo != NULL)
-	{
-		struct NohParede *remover = nohCabecaParedes.proximo;
-		nohCabecaParedes.proximo = nohCabecaParedes.proximo->proximo;
-
-		/* Libera memoria */
-		delete remover;
-	}
-
-	/* Le do arquivo e insere paredes */
-	while (!feof(arq))
-	{
-		int ax, ay, bx, by;
-		fscanf(arq, "%d,%d:%d,%d\n", &ax, &ay, &bx, &by);
-
-		if (ax > -(signed int)propriedades.tamanho_x && ax < (signed int)propriedades.tamanho_x*2 &&
-			bx > -(signed int)propriedades.tamanho_x && bx < (signed int)propriedades.tamanho_x*2 &&
-			ay > -(signed int)propriedades.tamanho_y && ay < (signed int)propriedades.tamanho_y*2 &&
-			ay > -(signed int)propriedades.tamanho_x && ay < (signed int)propriedades.tamanho_y*2)
-		{
-			/* Insere nova parede */
-			struct NohParede *novaParede = new struct NohParede;
-
-			novaParede->inicio = Vetor<float>(ax,ay);
-			novaParede->fim = Vetor<float>(bx,by);
-			novaParede->proximo = nohCabecaParedes.proximo;
-			nohCabecaParedes.proximo = novaParede;
-		}
-	}
-}
-
-/******************************************************************************/
 
 void Mundo::salvarMundo(FILE *arq)
 {
-	/* Salva estatisticas */
-	fprintf(arq, "%lu,%lu,%lu\n",
-	estatisticas.ciclos, estatisticas.mortes, estatisticas.nascimentos);
+	fprintf(arq, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+	fprintf(arq, "<!DOCTYPE simulation SYSTEM \"http://simvida.sourceforge.net/simvida.simulation.dtd\">\n");
+	fprintf(arq, "<simulation cicles=\"%ld\" borns=\"%ld\" deaths=\"%ld\"\n",
+		estatisticas.ciclos, estatisticas.nascimentos, estatisticas.mortes);
 
 	/* salva propriedades */
-	fprintf(arq, "%d,%d,%d,%d,%d,%d\n",
-	propriedades.teto_energetico, propriedades.energia_grao,
-	propriedades.probabilidade_mutacao, propriedades.intensidade_mutacao,
-	propriedades.tamanho_x, propriedades.tamanho_y);
-
-	/* Salva graos */
-	for (struct NohGrao *percorre = nohCabecaGraos.proximo;
-	percorre != NULL;
-	percorre = percorre->proximo)
-	{
-		fprintf(arq, "(%d,%d)\n", (int)percorre->posicao.X, (int)percorre->posicao.Y);
-	}
-
-	/* separador */
-	fprintf(arq, "#\n");
+	fprintf(arq, " energyceil=\"%d\" grainenergy=\"%d\" mutationprobability=\"%d\"\n",
+		propriedades.teto_energetico, propriedades.energia_grao, propriedades.probabilidade_mutacao);
+	fprintf(arq, " mutationintensity=\"%d\" size=\"%d;%d\">\n",
+		propriedades.intensidade_mutacao, propriedades.tamanho_x, propriedades.tamanho_y);
 
 	/* Salvar biotas */
 	for (struct NohBiota *percorre = nohCabecaBiotas.proximo;
 	percorre != NULL;
 	percorre = percorre->proximo)
 	{
-		/* salva correcao anti-leudemais */
-		fprintf(arq, "[");
-		/* salva genes */
-		percorre->biota.salvar(arq);
-		/* salva estado */
-		fprintf(arq, "[(%f,%f)(%f,%f),%f,%f,%f,%d,%d,%d,%d]\n",
-		percorre->biota.estado.posicao.X, percorre->biota.estado.posicao.Y,
-		percorre->biota.estado.velocidade.X, percorre->biota.estado.velocidade.Y,
-		percorre->biota.estado.velocidade_angular, percorre->biota.estado.angulo,
-		percorre->biota.estado.energia, percorre->biota.estado.idade,
-		percorre->biota.estado.geracao, percorre->biota.estado.filhos,
-		percorre->biota.lineage);
-		fprintf(arq, "(");
-		for (unsigned int c = 0; c < percorre->biota.numero_segmentos; c++)
-			fprintf(arq, "%f,", percorre->biota.estado.posicaoSegmentos[c]);
-		fprintf(arq, ")\n");
+		/* salva biota */
+		percorre->biota.salvar(arq, true, 1);
+	}
+
+	/* Salva graos */
+	for (struct NohGrao *percorre = nohCabecaGraos.proximo;
+	percorre != NULL;
+	percorre = percorre->proximo)
+	{
+		fprintf(arq, "\t<grain position=\"%d;%d\"/>\n", (int)percorre->posicao.X, (int)percorre->posicao.Y);
+	}
+
+	/* Salvar paredes */
+	/* Percorre lista de paredes */
+	for (struct NohParede *percorre = nohCabecaParedes.proximo;
+	percorre != NULL;
+	percorre = percorre->proximo)
+	{
+		fprintf(arq, "\t<wall geometry=\"%d;%d;%d;%d\"/>\n",
+			(int)percorre->inicio.X, (int)percorre->inicio.Y, (int)percorre->fim.X, (int)percorre->fim.Y);
 	}
 
 	/* separador */
-	fprintf(arq, "#\n");
-
-	/* Salvar paredes */
-	salvarParedes(arq);
+	fprintf(arq, "</simulation>\n");
 }
 
 /******************************************************************************/
@@ -504,50 +448,81 @@ void Mundo::abrirMundo(FILE *arq)
 	/* limpa mundo */
 	destroy();
 
-	/* Abre estatisticas */
-	fscanf(arq, "%lu,%lu,%lu\n",
-	&estatisticas.ciclos, &estatisticas.mortes, &estatisticas.nascimentos);
+	QDomDocument xmlDocument;
+	QFile file;
+	file.open(arq, QIODevice::ReadOnly);
+	if (!xmlDocument.setContent(&file))
+		fprintf(stderr, "XML Parser error.\n");
+	file.close();
 
-	/* Abre propriedades */
-	fscanf(arq, "%d,%d,%d,%d,%d,%d\n",
-	&propriedades.teto_energetico, &propriedades.energia_grao,
-	&propriedades.probabilidade_mutacao, &propriedades.intensidade_mutacao,
-	&propriedades.tamanho_x, &propriedades.tamanho_y);
-
-	/* Abre graos */
-	while (fgetc(arq) != '#')
+	QDomNodeList children = xmlDocument.childNodes();
+	for (int i=0; i < children.count(); i++)
 	{
-		int px, py;
-		fscanf(arq, "%d,%d)\n", &px, &py);
-		inserirGrao(Vetor<float>(px,py));
+		/* try to convert the node to an element. */
+		QDomElement element = children.at(i).toElement();
+		if (!element.isNull() && element.tagName() == "simulation")
+		{
+
+			propriedades.teto_energetico = element.attribute("energyceil",
+				QString::number(propriedades.teto_energetico)).toInt();
+			propriedades.energia_grao = element.attribute("grainenergy",
+				QString::number(propriedades.energia_grao)).toInt();
+			propriedades.probabilidade_mutacao = element.attribute("mutationprobability",
+				QString::number(propriedades.probabilidade_mutacao)).toInt();
+			propriedades.intensidade_mutacao = element.attribute("mutationintensity",
+				QString::number(propriedades.intensidade_mutacao)).toInt();
+
+			QStringList size = element.attribute("size",
+				QString::number(propriedades.tamanho_x) + ";" + QString::number(propriedades.tamanho_y)).split(";");
+			propriedades.tamanho_x = size.at(0).toInt();
+			propriedades.tamanho_y = size.at(1).toInt();
+
+			estatisticas.ciclos = element.attribute("cicles", "0").toInt();
+			estatisticas.mortes = element.attribute("deaths", "0").toInt();
+			estatisticas.nascimentos = element.attribute("borns", "0").toInt();
+
+			QDomNodeList simChildren = element.childNodes();
+			for (int j=0; j < simChildren.count(); j++)
+			{
+				/* try to convert the node to an element. */
+				QDomElement simElement = simChildren.at(j).toElement();
+				if (!simElement.isNull() && simElement.tagName() == "biot")
+				{
+					Biota biota;
+					biota.abrir(simElement);
+					inserirBiota(biota);
+				}
+				else if (!simElement.isNull() && simElement.tagName() == "grain")
+				{
+					QStringList position = simElement.attribute("position").split(";");
+					inserirGrao(Vetor<float>(position.at(0).toFloat(),position.at(1).toFloat()));
+				}
+				else if (!simElement.isNull() && simElement.tagName() == "wall")
+				{
+					QStringList geometry = simElement.attribute("geometry").split(";");
+					int ax = geometry.at(0).toInt();
+					int ay = geometry.at(1).toInt();
+					int bx = geometry.at(2).toInt();
+					int by = geometry.at(3).toInt();
+
+					if (ax > -(signed int)propriedades.tamanho_x && ax < (signed int)propriedades.tamanho_x*2 &&
+					bx > -(signed int)propriedades.tamanho_x && bx < (signed int)propriedades.tamanho_x*2 &&
+					ay > -(signed int)propriedades.tamanho_y && ay < (signed int)propriedades.tamanho_y*2 &&
+					ay > -(signed int)propriedades.tamanho_x && ay < (signed int)propriedades.tamanho_y*2)
+					{
+						/* Insere nova parede */
+						struct NohParede *novaParede = new struct NohParede;
+
+						novaParede->inicio = Vetor<float>(ax,ay);
+						novaParede->fim = Vetor<float>(bx,by);
+						novaParede->proximo = nohCabecaParedes.proximo;
+						nohCabecaParedes.proximo = novaParede;
+					}
+				}
+			}
+		}
 	}
-	fgetc(arq);
-
-	/* Abre biotas */
-	while (fgetc(arq) != '#')
-	{
-		/* le genes */
-		Biota biota = Biota(this, Vetor<float>(), arq);
-		/* le estado */
-		fscanf(arq, "[(%f,%f)(%f,%f),%f,%f,%f,%d,%d,%d,%d]\n",
-		&biota.estado.posicao.X, &biota.estado.posicao.Y,
-		&biota.estado.velocidade.X, &biota.estado.velocidade.Y,
-		&biota.estado.velocidade_angular, &biota.estado.angulo,
-		&biota.estado.energia, &biota.estado.idade,
-		&biota.estado.geracao, &biota.estado.filhos, &biota.lineage);
-
-		fscanf(arq, "(");
-		for (unsigned int c = 0; c < biota.numero_segmentos; c++)
-			fscanf(arq, "%f,", &biota.estado.posicaoSegmentos[c]);
-		fscanf(arq, ")\n");
-
-		/* adiciona */
-		inserirBiota(biota);
-	}
-	fgetc(arq);
-
-	/* le paredes */
-	abrirParedes(arq);
+	xmlDocument.clear();
 }
 
 /******************************************************************************/
