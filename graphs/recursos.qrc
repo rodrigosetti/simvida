@@ -1,32 +1,30 @@
 <RCC>
-  <qresource prefix="/botoes" >
-    <file>botoes/abrir.png</file>
-    <file>botoes/abrirsimulacao.png</file>
-    <file>botoes/add_grao.png</file>
-    <file>botoes/adicionar.png</file>
-    <file>botoes/ajuda.png</file>
-    <file>botoes/auto_selecionar.png</file>
-    <file>botoes/estatisticas.png</file>
-    <file>botoes/excluir-parede.png</file>
-    <file>botoes/fixar.png</file>
-    <file>botoes/limpar.png</file>
-    <file>botoes/mais_energia.png</file>
-    <file>botoes/mais_filhos.png</file>
-    <file>botoes/mais_velho.png</file>
-    <file>botoes/matar.png</file>
-    <file>botoes/mutacao.png</file>
-    <file>botoes/nova-parede.png</file>
-    <file>botoes/opcoes.png</file>
-    <file>botoes/pause.png</file>
-    <file>botoes/reiniciar.png</file>
-    <file>botoes/sair.png</file>
-    <file>botoes/salvar.png</file>
-    <file>botoes/salvarsimulacao.png</file>
-    <file>botoes/sub_grao.png</file>
+  <qresource prefix="/buttons" >
+    <file>buttons/abrir.png</file>
+    <file>buttons/abrirsimulacao.png</file>
+    <file>buttons/add_grao.png</file>
+    <file>buttons/adicionar.png</file>
+    <file>buttons/ajuda.png</file>
+    <file>buttons/auto_selecionar.png</file>
+    <file>buttons/estatisticas.png</file>
+    <file>buttons/excluir-parede.png</file>
+    <file>buttons/fixar.png</file>
+    <file>buttons/limpar.png</file>
+    <file>buttons/mais_energia.png</file>
+    <file>buttons/mais_filhos.png</file>
+    <file>buttons/mais_velho.png</file>
+    <file>buttons/matar.png</file>
+    <file>buttons/mutacao.png</file>
+    <file>buttons/nova-parede.png</file>
+    <file>buttons/opcoes.png</file>
+    <file>buttons/pause.png</file>
+    <file>buttons/reiniciar.png</file>
+    <file>buttons/sair.png</file>
+    <file>buttons/salvar.png</file>
+    <file>buttons/salvarsimulacao.png</file>
+    <file>buttons/sub_grao.png</file>
   </qresource>
-  <qresource prefix="/icones" >
-    <file>icones/esperma3.png</file>
-    <file>icones/principal.png</file>
-    <file>icones/simvida_reborn.png</file>
+  <qresource prefix="/icons" >
+    <file>icons/main-icon.png</file>
   </qresource>
 </RCC>
