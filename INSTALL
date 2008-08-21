@@ -9,8 +9,11 @@ To install just follow:
 
 $ ./configure
 $ make
-# make install
 
-Then invoke:
+Obs:
+"make install" is not suported yet, so, your binary file will be generated in
+the current dir.
 
-$ simvida
+To run invoke:
+
+$ ./simvida
