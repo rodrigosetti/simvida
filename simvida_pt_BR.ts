@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="pt">
-<defaultcodec></defaultcodec>
 <context>
     <name>Ajuda</name>
     <message>
@@ -111,142 +110,142 @@ p, li { white-space: pre-wrap; }
         <translation>&amp;Paredes</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="128"/>
+        <location filename="gui/forms/main-window.ui" line="126"/>
         <source>&amp;Reset</source>
         <translation>&amp;Reiniciar</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="137"/>
+        <location filename="gui/forms/main-window.ui" line="135"/>
         <source>&amp;Options</source>
         <translation>&amp;Opções</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="146"/>
+        <location filename="gui/forms/main-window.ui" line="144"/>
         <source>&amp;Exit</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="155"/>
+        <location filename="gui/forms/main-window.ui" line="153"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="164"/>
+        <location filename="gui/forms/main-window.ui" line="162"/>
         <source>&amp;Mutate</source>
         <translation>&amp;Mutação</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="173"/>
+        <location filename="gui/forms/main-window.ui" line="171"/>
         <source>&amp;New Biot</source>
         <translation>&amp;Novo Biota</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="182"/>
+        <location filename="gui/forms/main-window.ui" line="180"/>
         <source>&amp;Load Biot</source>
         <translation>&amp;Carregar Biota</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="191"/>
+        <location filename="gui/forms/main-window.ui" line="189"/>
         <source>&amp;Save Biot</source>
         <translation>&amp;Salvar Biota</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="200"/>
+        <location filename="gui/forms/main-window.ui" line="198"/>
         <source>&amp;Kill</source>
         <translation>&amp;Matar</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="209"/>
+        <location filename="gui/forms/main-window.ui" line="207"/>
         <source>New &amp;Wall</source>
         <translation>Nova &amp;Parede</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="218"/>
+        <location filename="gui/forms/main-window.ui" line="216"/>
         <source>&amp;Remove Wall</source>
         <translation>&amp;Remove Parede</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="227"/>
+        <location filename="gui/forms/main-window.ui" line="225"/>
         <source>Add &amp;Grain</source>
         <translation>Adicionar &amp;Grão</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="236"/>
+        <location filename="gui/forms/main-window.ui" line="234"/>
         <source>Remove &amp;Grain</source>
         <translation>&amp;Remover Grão</translation>
     </message>
     <message>
         <location filename="gui/forms/main-window.ui" line="245"/>
         <source>&amp;Save Wall map</source>
-        <translation>Salvar Mapa de &amp;Paredes</translation>
+        <translation type="obsolete">Salvar Mapa de &amp;Paredes</translation>
     </message>
     <message>
         <location filename="gui/forms/main-window.ui" line="254"/>
         <source>&amp;Open Wall map</source>
-        <translation>Carregar &amp;Mapa de Paredes</translation>
+        <translation type="obsolete">Carregar &amp;Mapa de Paredes</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="263"/>
+        <location filename="gui/forms/main-window.ui" line="243"/>
         <source>&amp;Estatistics</source>
         <translation>&amp;Estatísticas</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="275"/>
+        <location filename="gui/forms/main-window.ui" line="255"/>
         <source>&amp;Pause</source>
         <translation>&amp;Pausar</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="284"/>
+        <location filename="gui/forms/main-window.ui" line="264"/>
         <source>&amp;Info</source>
         <translation>&amp;Informações</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="293"/>
+        <location filename="gui/forms/main-window.ui" line="273"/>
         <source>&amp;Older</source>
         <translation>Mais &amp;Velho</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="302"/>
+        <location filename="gui/forms/main-window.ui" line="282"/>
         <source>Most &amp;Energy</source>
         <translation>Mais &amp;Energia</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="311"/>
+        <location filename="gui/forms/main-window.ui" line="291"/>
         <source>Younger &amp;Generation</source>
         <translation>&amp;Geração Mais Nova</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="320"/>
+        <location filename="gui/forms/main-window.ui" line="300"/>
         <source>Oldest &amp;Generation</source>
         <translation>Geração &amp;Mais Velha</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="329"/>
+        <location filename="gui/forms/main-window.ui" line="309"/>
         <source>Most &amp;Offsprings</source>
         <translation>Mais &amp;Filhos</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="341"/>
+        <location filename="gui/forms/main-window.ui" line="321"/>
         <source>&amp;Track selected</source>
         <translation>&amp;Seguir Selecionado</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="353"/>
+        <location filename="gui/forms/main-window.ui" line="333"/>
         <source>&amp;Auto select</source>
         <translation>&amp;Auto Selecionar</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="362"/>
+        <location filename="gui/forms/main-window.ui" line="342"/>
         <source>&amp;Clean</source>
         <translation>&amp;Limpar</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="371"/>
+        <location filename="gui/forms/main-window.ui" line="351"/>
         <source>&amp;Open Simulation</source>
         <translation>&amp;Carregar Simulação</translation>
     </message>
     <message>
-        <location filename="gui/forms/main-window.ui" line="380"/>
+        <location filename="gui/forms/main-window.ui" line="360"/>
         <source>&amp;Save Simulation</source>
         <translation>&amp;Salvar Simulação</translation>
     </message>
@@ -256,27 +255,27 @@ p, li { white-space: pre-wrap; }
         <translation>Barra de Ferramentas</translation>
     </message>
     <message>
-        <location filename="gui/main-window.cpp" line="45"/>
+        <location filename="gui/main-window.cpp" line="43"/>
         <source>Search Biot</source>
         <translation>&amp;Encontrar Biota</translation>
     </message>
     <message>
-        <location filename="gui/main-window.cpp" line="92"/>
+        <location filename="gui/main-window.cpp" line="88"/>
         <source>Biot</source>
         <translation>Biota</translation>
     </message>
     <message>
-        <location filename="gui/main-window.cpp" line="105"/>
+        <location filename="gui/main-window.cpp" line="101"/>
         <source>Options</source>
         <translation>Opções</translation>
     </message>
     <message>
-        <location filename="gui/main-window.cpp" line="120"/>
+        <location filename="gui/main-window.cpp" line="116"/>
         <source>Grain</source>
         <translation>Grão</translation>
     </message>
     <message>
-        <location filename="gui/main-window.cpp" line="127"/>
+        <location filename="gui/main-window.cpp" line="123"/>
         <source>Wall</source>
         <translation>Parede</translation>
     </message>
@@ -311,15 +310,15 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="gui/mundoqt.cpp" line="952"/>
         <source>Open Wall map</source>
-        <translation>Abrir Mapa de Paredes</translation>
+        <translation type="obsolete">Abrir Mapa de Paredes</translation>
     </message>
     <message>
         <location filename="gui/mundoqt.cpp" line="976"/>
         <source>Save Wall map</source>
-        <translation>Salvar Mapa de Paredes</translation>
+        <translation type="obsolete">Salvar Mapa de Paredes</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1013"/>
+        <location filename="gui/mundoqt.cpp" line="973"/>
         <source>Save Biot</source>
         <translation>Salvar Biota</translation>
     </message>
@@ -329,17 +328,17 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Biota(*.biot)</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1029"/>
+        <location filename="gui/mundoqt.cpp" line="989"/>
         <source>Open Biot</source>
         <translation>Carregar Biota</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1288"/>
+        <location filename="gui/mundoqt.cpp" line="1248"/>
         <source>Open Simulation</source>
         <translation>Carregar Simulação</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1311"/>
+        <location filename="gui/mundoqt.cpp" line="1271"/>
         <source>Save Simulation</source>
         <translation>Salvar Simulação</translation>
     </message>
@@ -369,7 +368,7 @@ p, li { white-space: pre-wrap; }
         <translation>Energia do Grão</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1029"/>
+        <location filename="gui/mundoqt.cpp" line="989"/>
         <source>Biot</source>
         <translation>Biota</translation>
     </message>
@@ -381,10 +380,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="gui/mundoqt.cpp" line="976"/>
         <source>Wall map</source>
-        <translation>Mapa de Paredes</translation>
+        <translation type="obsolete">Mapa de Paredes</translation>
     </message>
     <message>
-        <location filename="gui/mundoqt.cpp" line="1311"/>
+        <location filename="gui/mundoqt.cpp" line="1271"/>
         <source>Simulation</source>
         <translation>Simulação</translation>
     </message>

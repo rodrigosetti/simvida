@@ -19,8 +19,8 @@
    <string>Information</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../graphs/recursos.qrc" >
-    <normaloff>:/icones/icones/principal.png</normaloff>:/icones/icones/principal.png</iconset>
+   <iconset resource="../../../graphs/recursos.qrc" >
+    <normaloff>:/icons/icons/main-icon.png</normaloff>:/icons/icons/main-icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -223,7 +223,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../graphs/recursos.qrc" />
+  <include location="../../../graphs/recursos.qrc" />
  </resources>
  <connections>
   <connection>

@@ -1,0 +1,16 @@
+
+Requirements:
+
+* qt4-lib
+* qt4-dev
+* qt4-dev-tools (qmake)
+
+To install just follow:
+
+$ ./configure
+$ make
+# make install
+
+Then invoke:
+
+$ simvida

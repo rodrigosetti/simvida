@@ -13,8 +13,8 @@
    <string>Statistics</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../graphs/recursos.qrc" >
-    <normaloff>:/botoes/botoes/estatisticas.png</normaloff>:/botoes/botoes/estatisticas.png</iconset>
+   <iconset resource="../../../graphs/recursos.qrc" >
+    <normaloff>:/icons/icons/main-icon.png</normaloff>:/icons/icons/main-icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -779,7 +779,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../graphs/recursos.qrc" />
+  <include location="../../../graphs/recursos.qrc" />
  </resources>
  <connections>
   <connection>

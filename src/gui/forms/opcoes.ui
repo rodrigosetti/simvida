@@ -19,8 +19,8 @@
    <string>Options</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../graphs/recursos.qrc" >
-    <normaloff>:/botoes/botoes/opcoes.png</normaloff>:/botoes/botoes/opcoes.png</iconset>
+   <iconset resource="../../../graphs/recursos.qrc" >
+    <normaloff>:/icons/icons/main-icon.png</normaloff>:/icons/icons/main-icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="spacing" >
@@ -363,7 +363,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../../graphs/recursos.qrc" />
+  <include location="../../../graphs/recursos.qrc" />
  </resources>
  <connections/>
 </ui>
