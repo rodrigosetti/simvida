@@ -1,7 +1,7 @@
 #include <QtGui>
 #include "main-window.h"
 
-// if we include <QtGui> there is no need to include every class used: <QString>, <QFileDialog>,...
+MainWindow * MainWindow::instance = NULL;
 
 MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, f)
 {
@@ -156,6 +156,8 @@ MainWindow::MainWindow(QMainWindow *parent, Qt::WFlags f) : QMainWindow(parent, 
 	timerA->start(50);
 	timerP->start(50);
 	timerS->start(500);
+
+	MainWindow::instance = this;
 }
 
 void MainWindow::startStop()

@@ -1,4 +1,5 @@
 #include "mundoqt.h"
+#include "main-window.h"
 
 #include <QColor>
 #include <QBrush>
@@ -970,16 +971,23 @@ void MundoQT::removerGrao()
 
 void MundoQT::salvarBiota()
 {
+	bool was_executando = executando;
+	if (executando)
+		MainWindow::getInstance()->startStop();
+
 	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Biot"),QDir::homePath(),tr("Biot") + "(*.xml)");
 
-	if (fileName.isNull())
-		return;
+	if (!fileName.isNull())
+	{
+		FILE *arq;
+		arq = fopen(fileName.toAscii().data(), "w");
 
-	FILE *arq;
-	arq = fopen(fileName.toAscii().data(), "w");
+		selecionado->biota.salvar(arq);
+		fclose(arq);
+	}
 
-	selecionado->biota.salvar(arq);
-	fclose(arq);
+	if (was_executando)
+		MainWindow::getInstance()->startStop();
 }
 
 /******************************************************************************/
