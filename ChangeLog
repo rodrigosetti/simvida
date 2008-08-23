@@ -1,3 +1,4 @@
 
+* 08-23-2008 [rodrigosetti] Fixed bug when trying to save a biot and it dies. Fix: pauses when saving
 * 08-20-2008 [rodrigosetti] Added GNU's automake scripts for distribution.
 * 08-19-2008 [rodrigosetti] Data files are XML now.
