@@ -1,3 +1,7 @@
+/** \file
+    Implementacao da classe Mundo
+    \author Rodrigo Setti
+*/
 #include "mundo.h"
 
 #include <stdlib.h>
@@ -10,7 +14,7 @@
 /******************************************************************************/
 
 /* Operacoes com graos */
-/* Acrescenta um novo grao na posicao dada */
+/** Acrescenta um novo grao na posicao dada */
 void Mundo::inserirGrao(Vetor<float> posicao)
 {
 	struct NohGrao *novoNohGrao = new NohGrao;
@@ -63,7 +67,7 @@ void Mundo::inserirGrao(Vetor<float> posicao)
 
 /******************************************************************************/
 
-/* Remove um grao da lista */
+/** Remove um grao da lista */
 bool Mundo::removerGrao()
 {
 	if (nohCabecaGraos.proximo == NULL)
@@ -89,7 +93,7 @@ bool Mundo::removerGrao()
 
 /******************************************************************************/
 
-/* Construtores */
+/** Construtor de um mundo vazio */
 Mundo::Mundo()
 {
 	srand(time(NULL));
@@ -117,7 +121,7 @@ Mundo::Mundo()
 
 /******************************************************************************/
 
-/* Constroi mundo com tamanho definido */
+/** Constroi mundo com tamanho definido */
 Mundo::Mundo(unsigned int tx, unsigned int ty)
 {
 	Mundo();
@@ -127,7 +131,7 @@ Mundo::Mundo(unsigned int tx, unsigned int ty)
 
 /******************************************************************************/
 
-/* Constroi mundo com determinado numero de biotas aleatorios */
+/** Constroi mundo com determinado numero de biotas aleatorios */
 Mundo::Mundo(unsigned int numero_de_biotas)
 {
 	Mundo();
@@ -139,7 +143,7 @@ Mundo::Mundo(unsigned int numero_de_biotas)
 
 /******************************************************************************/
 
-/* Constroi mundo com tamanho definido e determinado numero de biotas */
+/** Constroi mundo com tamanho definido e determinado numero de biotas */
 Mundo::Mundo(unsigned int tx, unsigned int ty, unsigned int numero_de_biotas)
 {
 	Mundo();
@@ -153,7 +157,7 @@ Mundo::Mundo(unsigned int tx, unsigned int ty, unsigned int numero_de_biotas)
 
 /******************************************************************************/
 
-/* Destrutor : limpa biotas e graos*/
+/** Destrutor : limpa biotas e graos*/
 void Mundo::destroy()
 {
 	/* Remove todos biotas */
@@ -178,7 +182,8 @@ void Mundo::destroy()
 	}
 
 	/* Remove todos graos */
-	while (removerGrao());
+	while (removerGrao())
+        ;
 
 	/* Zera estatisticas */
 	estatisticas.numero_biotas = 0;
@@ -190,7 +195,7 @@ void Mundo::destroy()
 
 /******************************************************************************/
 
-/* Operacoes */
+/** Insere biota no mundo */
 void Mundo::inserirBiota(Biota biota)
 {
 	struct NohBiota *novoNohBiota = new NohBiota;
@@ -205,7 +210,7 @@ void Mundo::inserirBiota(Biota biota)
 
 /******************************************************************************/
 
-/* Atualiza mundo */
+/** Atualiza mundo */
 void Mundo::atualizar()
 {
 	/* Contador de energia total dos biotas */
@@ -301,7 +306,7 @@ void Mundo::atualizar()
 
 /******************************************************************************/
 
-/* Operacoes com biotas */
+/** Seleciona biota na posicao, se existir */
 bool Mundo::selecionarBiota(Vetor<float> posicao)
 {
 	/* Percorre a lista de biotas */
@@ -321,6 +326,7 @@ bool Mundo::selecionarBiota(Vetor<float> posicao)
 
 /******************************************************************************/
 
+/** Desceleciona biota se selecionado */
 void Mundo::descelecionarBiota()
 {
 	selecionado = NULL;
@@ -330,6 +336,7 @@ void Mundo::descelecionarBiota()
 /* OPERACOES COM GRAOS */
 /******************************************************************************/
 
+/** Remove grao selecionado */
 void Mundo::removerGraoSelecionado()
 {
 	if (grao_selecionado == NULL)
@@ -354,6 +361,7 @@ void Mundo::removerGraoSelecionado()
 
 /******************************************************************************/
 
+/** Desceleciona grao se selecionado */
 void Mundo::descelecionarGrao()
 {
 	grao_selecionado = NULL;
@@ -361,6 +369,7 @@ void Mundo::descelecionarGrao()
 
 /******************************************************************************/
 
+/** Seleciona grao na posicao, se existir */
 bool Mundo::selecionarGrao(Vetor<float> posicao)
 {
 	/* Percorre a lista de graos */
@@ -380,6 +389,7 @@ bool Mundo::selecionarGrao(Vetor<float> posicao)
 
 /******************************************************************************/
 
+/** Muda posicao do grao selecionado */
 void Mundo::posicionarGrao(Vetor<float> posicao)
 {
 	if (grao_selecionado != NULL)
@@ -390,6 +400,7 @@ void Mundo::posicionarGrao(Vetor<float> posicao)
 
 /******************************************************************************/
 
+/** Retorna verdadeiro se existe grao selecionado */
 bool Mundo::graoSelecionado()
 {
 	return (grao_selecionado != NULL);
@@ -397,6 +408,7 @@ bool Mundo::graoSelecionado()
 
 /******************************************************************************/
 
+/** Salva estado do mundo em um arquivo */
 void Mundo::salvarMundo(FILE *arq)
 {
 	fprintf(arq, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
@@ -443,6 +455,7 @@ void Mundo::salvarMundo(FILE *arq)
 
 /******************************************************************************/
 
+/** Abre mundo descrito em arquivo */
 void Mundo::abrirMundo(FILE *arq)
 {
 	/* limpa mundo */

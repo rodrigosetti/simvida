@@ -1,3 +1,7 @@
+/** \file
+    Definicao da classe Mundo
+    \author Rodrigo Setti
+*/
 #ifndef _MUNDO__H_
 #define _MUNDO__H_
 
@@ -6,14 +10,20 @@
 
 /******************************************************************************/
 
-/* Noh de uma Fila de graos */
+/**
+    Noh de uma Fila de graos
+    \author Rodrigo Setti
+*/
 struct NohGrao
 {
 	Vetor<float> posicao;
 	struct NohGrao *proximo;
 };
 
-/* Lista de paredes */
+/**
+    Lista de paredes
+    \author Rodrigo Setti
+*/
 struct NohParede
 {
 	Vetor<float> inicio;
@@ -21,6 +31,12 @@ struct NohParede
 	struct NohParede *proximo;
 };
 
+/**
+    \class Mundo
+    Encapsula operacoes conjuntas, agrupamento e simulacao de todos os elementos do
+    mundo Simvida: biotas, graos e paredes
+    \author Rodrigo Setti
+*/
 class Mundo
 {
 protected:

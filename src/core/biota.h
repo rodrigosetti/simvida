@@ -1,3 +1,7 @@
+/** \file
+    Definicao da classe Biota
+    \author Rodrigo Setti
+*/
 #ifndef _BIOTA__H_
 #define _BIOTA__H_
 
@@ -9,7 +13,10 @@
 
 /******************************************************************************/
 
-/* Estrutura que define os genes de um segmento */
+/**
+    Estrutura que define os genes de um segmento
+    \author Rodrigo Setti
+*/
 struct GenesSegmento
 {
 	float arco;
@@ -22,7 +29,10 @@ struct GenesSegmento
 
 /******************************************************************************/
 
-/* Estrutura que define os genes de um biota */
+/**
+    Estrutura que define os genes de um biota
+    \author Rodrigo Setti
+*/
 struct GenesBiota
 {
 	struct GenesSegmento *segmentos;
@@ -36,7 +46,10 @@ struct GenesBiota
 
 /******************************************************************************/
 
-/* Estrutura que define o estado de um biota */
+/**
+    Estrutura que define o estado de um biota
+    \author Rodrigo Setti
+*/
 struct EstadoBiota
 {
 	float *posicaoSegmentos;
@@ -52,22 +65,25 @@ struct EstadoBiota
 
 /******************************************************************************/
 
-/* Classe que define o proprio biota */
+/**
+    Classe que define o proprio biota
+    \author Rodrigo Setti
+*/
 class Biota
 {
 
 public:
 	unsigned int lineage;
 
-	/* Estrutura que define os genes de um biota */
+	/** Estrutura que define os genes de um biota */
 	struct GenesBiota genes;
 
-	/* Estrutura que define o estado de um biota */
+	/** Estrutura que define o estado de um biota */
 	struct EstadoBiota estado;
 
 	unsigned int numero_segmentos;
 
-	/* Referencia ao mundo que o biota vive */
+	/** Referencia ao mundo que o biota vive */
 	void *mundo;
 
 //public:

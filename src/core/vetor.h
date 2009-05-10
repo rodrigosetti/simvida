@@ -1,14 +1,18 @@
+/** \file
+    Definicao e implementacao de um vetor bidimensional com tipo generico
+    \author Rodrigo Setti
+*/
 #ifndef _VETOR__H
 #define _VETOR__H
 
 #include <math.h>
 
-/*
-	Classe Vetor : Interface
+/**
+	\class Vetor
 
 	Encapsula a estrutura de dados e operacoes aplicaveis em um vetor bidimensional.
 
-	rodrigosetti@gmail.com
+    \author Rodrigo Setti
 */
 template <class TIPO>
 class Vetor
@@ -139,7 +143,7 @@ bool inline Vetor<TIPO>::operator !=(Vetor A)
 	return (X != A.X || Y != A.Y);
 }
 
-/* Opracoes avancadas */
+/* Operacoes avancadas */
 
 template <class TIPO>
 Vetor<TIPO> inline Vetor<TIPO>::reduzir()

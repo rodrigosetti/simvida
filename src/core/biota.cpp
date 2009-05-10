@@ -1,3 +1,8 @@
+/** \file
+    Implementacao da classe Biota
+    \author Rodrigo Setti
+*/
+
 #include "biota.h"
 #include "mundo.h"
 #include <math.h>
@@ -10,26 +15,31 @@
 
 /******************************************************************************/
 
+/** Variavel global para controle de numero unico de linhagem */
 unsigned int current_lineage = 0;
 
-/* Macro para pegar o modulo de um numero */
+/** Macro para pegar o modulo de um numero */
 #define ABS(a) (((a) > 0)? (a) : -(a))
 
-/* Macro para correcao de angulo */
+/** Macro para correcao de angulo */
 #define CORRIGE(a) (((a) < 0)? (a)+DPI : ((a) >= DPI)? (a) - DPI : (a))
 #define CORRIGE2(a) (((a) < -DPI)? (a)+DPI : ((a) > DPI)? (a) - DPI : (a))
 
-/* Macro para a operacao logicao ou exclusivo */
+/** Macro para a operacao logicao ou exclusivo */
 #define XOR(a,b) (((a) && !(b)) || (!(a) && (b)))
 
-/* Macro para verificar se C esta a esquerda do vetor AB */
+/** Macro para verificar se C esta a esquerda do vetor AB */
 #define ESQUERDA(a,b,c) (area_triangulo(a,b,c) > 0)
 
-/* Media estatistica de estabilização mutativa de numero de segmentos */
+/** Media estatistica de estabilização mutativa de numero de segmentos */
 #define MEDIA_SEGMENTOS 8
 
 /******************************************************************************/
 
+/**
+    Calcula a area de um triangulo dado por tres pontos A,B e C.
+    \author Rodrigo Setti
+*/
 float area_triangulo(Vetor<float> A, Vetor<float> B, Vetor<float> C)
 {
   return A.X * B.Y - A.Y * B.X +
@@ -39,8 +49,25 @@ float area_triangulo(Vetor<float> A, Vetor<float> B, Vetor<float> C)
 
 /******************************************************************************/
 
+/**
+    Retorna uma realizacao de uma variavel aleatoria pela distribuicao normal
+    (Gaussiana), utiliza a transformacao de Box-Muller para calcular a normal
+    a partir de duas realizacoes aleatoreas distribuidas uniformemente entre
+    0 e 1
+    \author Rodrigo Setti
+*/
+float normal()
+{
+    float u1 = (rand() % 10000)/10000.;
+    float u2 = (rand() % 10000)/10000.;
+
+    return sqrt(-2*log(u1))*cos(DPI*u2);
+}
+
+/******************************************************************************/
+
 /* Construtores */
-/* Constroi biota nulo */
+/** Constroi biota nulo */
 Biota::Biota()
 {
 	lineage = current_lineage++;
@@ -73,7 +100,7 @@ Biota::Biota()
 
 /******************************************************************************/
 
-/* Constroi biota aleatorio */
+/** Constroi biota aleatorio */
 Biota::Biota(void *mundoPai)
 {
 	lineage = current_lineage++;
@@ -125,7 +152,7 @@ Biota::Biota(void *mundoPai)
 
 /******************************************************************************/
 
-/* Constroi biota baseado em outro biota */
+/** Constroi biota baseado em outro biota */
 Biota::Biota(const Biota &copia)
 {
 	lineage = copia.lineage;
@@ -152,7 +179,7 @@ Biota::Biota(const Biota &copia)
 
 /******************************************************************************/
 
-/* Constroi biota no mundo e posicao dados com base em arquivo */
+/** Constroi biota no mundo e posicao dados com base em arquivo */
 Biota::Biota(void *mundoPai, Vetor<float> posicao, FILE *arquivo)
 {
 	Biota((void*)mundoPai);
@@ -165,7 +192,7 @@ Biota::Biota(void *mundoPai, Vetor<float> posicao, FILE *arquivo)
 
 /******************************************************************************/
 
-/* Destructor */
+/** Destructor */
 void Biota::destroy()
 {
 	/* Libera memoria */
@@ -176,7 +203,7 @@ void Biota::destroy()
 /******************************************************************************/
 
 /* Metodos */
-/* Atualiza biota e retorna estado */
+/** Atualiza biota e retorna estado */
 enum ResultadoAtualizacao Biota::atualizar(void *noh)
 {
 	/* massa total */
@@ -537,7 +564,7 @@ enum ResultadoAtualizacao Biota::atualizar(void *noh)
 
 /******************************************************************************/
 
-/* Aplica mutacao com base na intensidade */
+/** Aplica mutacao com base na intensidade */
 void Biota::mutacao()
 {
 	#define CABECA	-1
@@ -551,23 +578,27 @@ void Biota::mutacao()
 
 		switch (indice)
 		{
+            /* mutacao na massa da cabeca */
 			case 0:
-				genes.massa_cabeca += tendencia;
+				genes.massa_cabeca += normal();
 				if (genes.massa_cabeca <= 0)
 					genes.massa_cabeca = 1;
 				break;
+            /* mutacao no limiar de reproducao */
 			case 1:
-				genes.limiar_reproducao += tendencia;
+				genes.limiar_reproducao += normal();
 				if (genes.limiar_reproducao <= 0)
 					genes.limiar_reproducao = 1;
 				break;
+            /* mutacao na distribuicao energetica */
 			case 2:
-				genes.distribuicao_energia += tendencia / 100.0f;
+				genes.distribuicao_energia += normal() * 0.001f;
 				if (genes.distribuicao_energia < 0.01f)
 					genes.distribuicao_energia = 0.01f;
 				else if (genes.distribuicao_energia > 1.0f)
 					genes.distribuicao_energia = 1.0f;
 				break;
+            /* adicao ou remocao de segmento */
 			case 3:
 				/* Decide se vai ganhar ou perder um segmento */
 				if (rand() % 1000 > (numero_segmentos-1) * 500.0f / MEDIA_SEGMENTOS)
@@ -628,47 +659,55 @@ void Biota::mutacao()
 					estado.posicaoSegmentos = novosEstados;
 				}
 				break;
+            /* mutacao no angulo de reproducao */
 			case 5:
-				genes.angulo_reproducao += tendencia / 10.0f;
+				genes.angulo_reproducao += normal() * 0.1f;
 				genes.angulo_reproducao = CORRIGE2(genes.angulo_reproducao);
 				break;
-
+            /* mutacao no angulo de colisao */
 			case 6:
-				genes.angulo_colisao += tendencia / 10.0f;
+				genes.angulo_colisao += normal() * 0.1f;
 				genes.angulo_colisao = CORRIGE2(genes.angulo_colisao);
 				break;
+            /* mutacao em algum parametro de um segmento */
 			default:
 				unsigned int c = rand() % numero_segmentos;
 				mutacao = c; /* Mutacao no segmento dado */
 				switch (rand() % 6)
 				{
+                    /* mutacao no arco do segmento */
 					case 0:
-						genes.segmentos[c].arco += tendencia / 10.0f;
+						genes.segmentos[c].arco += normal() * 0.1f;
 						if (genes.segmentos[c].arco < 0.0f)
 							genes.segmentos[c].arco = 0.0f;
 						break;
+                    /* mutacao no comprimento do segmento */
 					case 1:
-						genes.segmentos[c].comprimento += tendencia;
+						genes.segmentos[c].comprimento += normal();
 						if (genes.segmentos[c].comprimento <= 0)
 							genes.segmentos[c].comprimento = 1;
 						break;
+                    /* mutacao na massa do segmento */
 					case 2:
-						genes.segmentos[c].massa += tendencia;
+						genes.segmentos[c].massa += normal();
 						if (genes.segmentos[c].massa <= 0)
 							genes.segmentos[c].massa = 1;
 						break;
+                    /* mutacao no angulo do segmento */
 					case 3:
-						genes.segmentos[c].angulo += tendencia / 10.0f;
+						genes.segmentos[c].angulo += normal() * 0.1f;
 						if (genes.segmentos[c].angulo < 0.0f)
 							genes.segmentos[c].angulo = 0.0f;
 						break;
+                    /* mutacao na forca A */
 					case 4:
-						genes.segmentos[c].fa += tendencia / 10.0f;
+						genes.segmentos[c].fa += normal();
 						if (genes.segmentos[c].fa < 0.0f)
 							genes.segmentos[c].fa = 0.0f;
 						break;
+                    /* mutacao na forca B */
 					case 5:
-						genes.segmentos[c].fb += tendencia / 10.0f;
+						genes.segmentos[c].fb += normal();
 						if (genes.segmentos[c].fb < 0.0f)
 							genes.segmentos[c].fb = 0.0f;
 						break;
@@ -676,7 +715,7 @@ void Biota::mutacao()
 			break;
 		}
 
-		#define TAXA_COR 5
+		#define TAXA_COR 10
 
 		indice %= 3;
 
@@ -701,7 +740,7 @@ void Biota::mutacao()
 
 /******************************************************************************/
 
-/* Verifica se biota eh selecionavel na posicao dada */
+/** Verifica se biota eh selecionavel na posicao dada */
 bool Biota::selecionar(Vetor<float> posicao)
 {
 	return (posicao.distancia(estado.posicao) <= genes.massa_cabeca * FATOR_SELECAO);
@@ -709,7 +748,7 @@ bool Biota::selecionar(Vetor<float> posicao)
 
 /******************************************************************************/
 
-/* Salva genes do biota no arquivo dado */
+/** Salva genes do biota no arquivo dado */
 void Biota::salvar(FILE* arquivo, bool saveState, int ident)
 {
 	if (ident == 0)
@@ -753,7 +792,7 @@ void Biota::salvar(FILE* arquivo, bool saveState, int ident)
 
 /******************************************************************************/
 
-/* Carrega genes do arquivo */
+/** Carrega genes do arquivo */
 void Biota::abrir(FILE* arquivo)
 {
 	QDomDocument xmlDocument;
@@ -782,6 +821,7 @@ void Biota::abrir(FILE* arquivo)
 
 /******************************************************************************/
 
+/** Carrega genes do objeto QDomNode */
 void Biota::abrir(QDomNode xmlNode)
 {
 	/* try to convert the node to an element. */
@@ -848,7 +888,7 @@ void Biota::abrir(QDomNode xmlNode)
 
 /******************************************************************************/
 
-/* Coloca biota na posicao dada */
+/** Coloca biota na posicao dada */
 void Biota::posicionar(Vetor<float> posicao)
 {
 	estado.posicao = posicao;
@@ -856,7 +896,7 @@ void Biota::posicionar(Vetor<float> posicao)
 
 /******************************************************************************/
 
-/* Acelera biota */
+/** Acelera biota */
 void Biota::acelerar(Vetor<float> aceleracao)
 {
 	estado.velocidade += aceleracao;
@@ -864,7 +904,7 @@ void Biota::acelerar(Vetor<float> aceleracao)
 
 /******************************************************************************/
 
-/* Reflete anatomia */
+/** Reflete anatomia */
 void Biota::refletir()
 {
 	genes.angulo_reproducao = -genes.angulo_reproducao;

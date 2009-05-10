@@ -60,10 +60,10 @@ MundoQT::MundoQT(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), Mundo()
 		/* Carrega configuracoes de arquivo */
 		FILE *arq = fdopen(file.handle(), "r");
 		fscanf(arq, "%d\n%d\n%d\n%d\n%d\n%d\n",
-		&(propriedades.tamanho_x), &(propriedades.tamanho_y),
-		&(propriedades.energia_grao),
-		&(propriedades.teto_energetico), &(propriedades.probabilidade_mutacao),
-		&(propriedades.intensidade_mutacao));
+               &(propriedades.tamanho_x), &(propriedades.tamanho_y),
+               &(propriedades.energia_grao),
+               &(propriedades.teto_energetico), &(propriedades.probabilidade_mutacao),
+               &(propriedades.intensidade_mutacao));
 
 		fclose(arq);
 	}
@@ -1041,8 +1041,9 @@ void MundoQT::removerBiota()
 	/* Percorre a lista de biotas em busca do selecionado*/
 	struct NohBiota *percorre;
 	for (percorre = &nohCabecaBiotas;
-	percorre->proximo != selecionado;
-	percorre = percorre->proximo);
+         percorre->proximo != selecionado;
+         percorre = percorre->proximo)
+        ;
 
 	/* Remove biota da lista */
 	struct NohBiota *remover = percorre->proximo;
