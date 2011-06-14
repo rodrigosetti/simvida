@@ -1,4 +1,8 @@
 tmp/
 *.orig
 *.swp
+Makefile
+qrc_recursos.cpp
+simvida.app
+src/guiu/ui/ui_*.h
 
