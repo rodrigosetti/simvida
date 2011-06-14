@@ -44,5 +44,5 @@ SOURCES += src/main.cpp \
 RESOURCES += graphs/recursos.qrc
 
 RC_FILE = graphs/winicon.rc
-
+ICON = graphs/icons/simvida.icns
 TRANSLATIONS += simvida_pt_BR.ts
