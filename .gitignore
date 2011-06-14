@@ -4,5 +4,5 @@ tmp/
 Makefile
 qrc_recursos.cpp
 simvida.app
-src/guiu/ui/ui_*.h
+src/gui/ui/ui_*.h
 
