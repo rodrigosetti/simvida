@@ -5,4 +5,5 @@ Makefile
 qrc_recursos.cpp
 simvida.app
 src/gui/ui/ui_*.h
+.DS_Store
 
