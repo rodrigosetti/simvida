@@ -1,6 +1,4 @@
------------------------------
-SIMVIDA: An Artificial Life Simulator
------------------------------
+# SIMVIDA: An Artificial Life Simulator
 
 What is life anyway? Does "living" are only those processes happening which are
 based on carbon?  Or does life is a higher definition that embraces anything
